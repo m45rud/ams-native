@@ -14,9 +14,9 @@ Aplikasi ini dibuat dengan bahasa pemrograman <a href="http://php.net/" target="
 
 Untuk menggunakan aplikasi ini silakan lakukan beberapa konfigurasi terlebih dahulu.
 
-- Konfigurasi database sistem: buka folder <b>include</b> -> <b>config.php</b> lalu setting databasenya.
-- Konfigurasi fitur backup database: buka file <b>database_backup.php</b> lalu setting databasenya.
-- Konfigurasi fitur restore database: buka file <b>database_restore.php</b> lalu setting databasenya.
+- Konfigurasi database sistem: buka folder **include** -> **config.php** lalu setting databasenya.
+- Konfigurasi fitur backup database: buka file **database_backup.php** lalu setting databasenya.
+- Konfigurasi fitur restore database: buka file **database_restore.php** lalu setting databasenya.
 
 Untuk tampilan terbaik, gunakan browser Google Chrome versi terbaru.
 
