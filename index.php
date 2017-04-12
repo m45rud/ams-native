@@ -26,11 +26,9 @@
         $query = mysqli_query($config, "SELECT logo from tbl_instansi");
         list($logo) = mysqli_fetch_array($query);
         if(!empty($logo)){
-            echo '<link rel="shortcut icon" href="./upload/'.$logo.'" type="image/x-icon">
-                  <link rel="icon" href="./upload/'.$logo.'" type="image/x-icon">';
+            echo '<link rel="icon" href="./upload/'.$logo.'" type="image/x-icon">';
         } else {
-            echo '<link rel="shortcut icon" href="./asset/img/favicon.ico" type="image/x-icon">
-                  <link rel="icon" href="./asset/img/favicon.ico" type="image/x-icon">';
+            echo '<link rel="icon" href="./asset/img/logo.png" type="image/x-icon">';
         }
     ?>
     <!-- Meta END -->

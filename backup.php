@@ -141,7 +141,7 @@
                 if(isset($_REQUEST['backup'])){
 
                     //konfigurasi database dan backup semua tabel
-                    backup("localhost","root","root","ams",$file,"*");
+                    backup("localhost","root","root","ams_native",$file,"*");
 
                     //backup hanya tabel tertentu
                     //backup("localhost","user_database","pass_database","nama_database",$file,"tabel1,tabel2,tabel3");

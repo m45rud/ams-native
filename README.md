@@ -15,6 +15,7 @@ Aplikasi ini dibuat dengan bahasa pemrograman <a href="http://php.net/" target="
 Untuk menggunakan aplikasi ini silakan lakukan beberapa konfigurasi terlebih dahulu.
 
 - Konfigurasi database sistem: buka folder **include** -> **config.php** lalu setting databasenya.
+- Konfigurasi kode klasifikasi surat: buka file **kode.php** lalu setting databasenya.
 - Konfigurasi fitur backup database: buka file **database_backup.php** lalu setting databasenya.
 - Konfigurasi fitur restore database: buka file **database_restore.php** lalu setting databasenya.
 

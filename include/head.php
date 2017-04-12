@@ -13,15 +13,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <?php
-        $query = mysqli_query($config, "SELECT logo from tbl_instansi");
-        list($logo) = mysqli_fetch_array($query);
-        if(!empty($logo)){
-            echo '<link rel="shortcut icon" href="./upload/'.$logo.'" type="image/x-icon">
-                  <link rel="icon" href="./upload/'.$logo.'" type="image/x-icon">';
-        } else {
-            echo '<link rel="shortcut icon" href="./asset/img/favicon.ico" type="image/x-icon">
-                  <link rel="icon" href="./asset/img/favicon.ico" type="image/x-icon">';
-        }
+      $query = mysqli_query($config, "SELECT logo from tbl_instansi");
+      list($logo) = mysqli_fetch_array($query);
+      if(!empty($logo)){
+          echo '<link rel="icon" href="./upload/'.$logo.'" type="image/x-icon">';
+      } else {
+          echo '<link rel="icon" href="./asset/img/logo.png" type="image/x-icon">';
+      }
     ?>
     <!-- Meta END -->
 
