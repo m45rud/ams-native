@@ -16,8 +16,8 @@ Untuk menggunakan aplikasi ini silakan lakukan beberapa konfigurasi terlebih dah
 
 - Konfigurasi database sistem: buka folder **include** -> **config.php** lalu setting databasenya.
 - Konfigurasi kode klasifikasi surat: buka file **kode.php** lalu setting databasenya.
-- Konfigurasi fitur backup database: buka file **database_backup.php** lalu setting databasenya.
-- Konfigurasi fitur restore database: buka file **database_restore.php** lalu setting databasenya.
+- Konfigurasi fitur backup database: buka file **backup.php** lalu setting databasenya.
+- Konfigurasi fitur restore database: buka file **restore.php** lalu setting databasenya.
 
 Untuk tampilan terbaik, gunakan browser Google Chrome versi terbaru.
 
