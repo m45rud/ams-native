@@ -108,8 +108,8 @@
                                                     }
                                                 } else {
                                                     $query = mysqli_query($config, "INSERT INTO tbl_surat_keluar(no_agenda,tujuan,no_surat,isi,kode,tgl_surat,
-                                                        tgl_catat,keterangan,id_user)
-                                                        VALUES('$no_agenda','$tujuan','$no_surat','$isi','$nkode','$tgl_surat',NOW(),'$keterangan','$id_user')");
+                                                        tgl_catat,file,keterangan,id_user)
+                                                        VALUES('$no_agenda','$tujuan','$no_surat','$isi','$nkode','$tgl_surat',NOW(),'','$keterangan','$id_user')");
 
                                                     if($query == true){
                                                         $_SESSION['succAdd'] = 'SUKSES! Data berhasil ditambahkan';
