@@ -24,12 +24,28 @@
     <!-- Meta END -->
 
     <!--[if lt IE 9]>
-    <script src="./asset/js/html5shiv.min.js"></script>
+    <script src="../asset/js/html5shiv.min.js"></script>
     <![endif]-->
 
+    <!-- Resources Hint START -->
+    <link rel="preload" href="./asset/css/materialize.css" as="style">
+    <link rel="preload" href="./asset/font/material-icons/MaterialIcons-Regular.woff2" as="font">
+    <link rel="preload" href="./asset/font/roboto/Roboto-Regular.ttf" as="font">
+    <link rel="preload" href="./asset/font/roboto/Roboto-Medium.ttf" as="font">
+    <link rel="preload" href="./asset/font/roboto/Roboto-Light.ttf" as="font">
+    <link rel="preload" href="./asset/css/jquery-ui.css" as="font">
+    <link rel="preload" href="./upload/<?=$logo?>" as="image">
+    <link rel="preload" href="./asset/img/background.jpg" as="image">
+    <link rel="preload" href="./asset/js/jquery-2.1.1.min.js" as="script">
+    <link rel="preload" href="./asset/js/materialize.min.js" as="script">
+    <link rel="preload" href="./asset/js/bootstrap.min.js" as="script">
+    <link rel="preload" href="./asset/js/pace.min.js" as="script">
+    <link rel="preload" href="./asset/js/jquery-ui.min.js" as="script">
+    <!-- Resources HintSTART -->
+
     <!-- Global style START -->
-    <link type="text/css" rel="stylesheet" href="./asset/css/materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="./asset/css/jquery-ui.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="./asset/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="./asset/css/jquery-ui.css">
     <style type="text/css">
         body {
             background: #fff;

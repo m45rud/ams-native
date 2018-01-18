@@ -34,11 +34,11 @@
     <!-- Meta END -->
 
     <!--[if lt IE 9]>
-    <script src="./asset/js/html5shiv.min.js"></script>
+    <script src="../asset/js/html5shiv.min.js"></script>
     <![endif]-->
 
     <!-- Global style START -->
-    <link type="text/css" rel="stylesheet" href="./asset/css/materialize.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="./asset/css/materialize.css">
     <style type="text/css">
         body {
             background: #fff;
@@ -300,10 +300,10 @@
     <!-- Container END -->
 
     <!-- Javascript START -->
-    <script type="text/javascript" src="asset/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="asset/js/materialize.min.js"></script>
-    <script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
-    <script data-pace-options='{ "ajax": false }' src='asset/js/pace.min.js'></script>
+    <script type="text/javascript" src="./asset/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./asset/js/materialize.min.js"></script>
+    <script type="text/javascript" src="./asset/js/bootstrap.min.js"></script>
+    <script data-pace-options='{ "ajax": false }' src='./asset/js/pace.min.js'></script>
 
     <!-- Jquery auto hide untuk menampilkan pesan error -->
     <script type="text/javascript">
@@ -312,7 +312,7 @@
     <!-- Javascript END -->
 
     <noscript>
-        <meta http-equiv="refresh" content="0;URL='./enable-javascript.html'" />
+        <meta http-equiv="refresh" content="0;URL='/enable-javascript.html'" />
     </noscript>
 
 </body>
