@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 18, 2018 at 07:05 PM
+-- Generation Time: Oct 19, 2018 at 10:07 AM
 -- Server version: 5.7.23-0ubuntu0.16.04.1
--- PHP Version: 7.2.11-2+ubuntu16.04.1+deb.sury.org+1
+-- PHP Version: 7.0.32-2+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -221,17 +221,17 @@ ALTER TABLE `tbl_disposisi`
 -- AUTO_INCREMENT for table `tbl_klasifikasi`
 --
 ALTER TABLE `tbl_klasifikasi`
-  MODIFY `id_klasifikasi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_klasifikasi` int(5) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_surat_keluar`
 --
 ALTER TABLE `tbl_surat_keluar`
-  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_surat_masuk`
 --
 ALTER TABLE `tbl_surat_masuk`
-  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
