@@ -91,8 +91,8 @@
                 function restore($file){
                 	global $rest_dir;
 
-                    //konfigurasi database
-                	$koneksi=mysqli_connect("localhost","root","root","ams");
+                    //konfigurasi restore database: host, user, password, database
+                	$koneksi=mysqli_connect("localhost","root","masrud.com","ams_native");
 
                 	$nama_file	= $file['name'];
                 	$ukrn_file	= $file['size'];
@@ -137,6 +137,8 @@
                         					$templine = '';
                         				}
                         			}
+
+                                    unlink($nama_file);
                                     $_SESSION['succRestore'] = 'SUKSES! Database berhasil direstore';
                                     header("Location: ./admin.php?page=sett&sub=rest");
                                     die();
@@ -175,7 +177,7 @@
                                     <span class="card-title black-text">Restore Database</span>
                                     <p class="kata">Silakan pilih file database lalu klik tombol <strong>"Restore"</strong> untuk melakukan restore database dari hasil backup yang telah dibuat sebelumnya. Jika belum ada file database hasil backup, silakan lakukan backup terlebih dahulu melalui menu <strong><a class="blue-text" style="text-transform: capitalize;margin-right: 0;" href="?page=sett&sub=back">"Backup Database"</a>.</strong></p><br/>
 
-                                    <p class="kata"><span class="red-text"><i class="material-icons">error_outline</i> <strong>PERINGATAN!</strong></span><br/>Berhati - hatilah ketika merestore database karena data yang ada akan diganti dengan data yang baru. Pastikan bahwa file database yang akan digunakan untuk merestore adalah <strong>"benar - benar"</strong> file backup database yang telah dibuat sebelumnya sehingga sistem dapat berjalan dengan normal dan tidak mengalami error.</p>
+                                    <p class="kata"><span class="red-text"><i class="material-icons">error_outline</i> <strong>PERINGATAN!</strong></span><br/>Berhati - hatilah ketika merestore database karena<span class="error"><strong>data yang ada akan diganti dengan data yang baru</strong></span>. Pastikan bahwa file database yang akan digunakan untuk merestore adalah <strong>"benar - benar"</strong> file backup database yang telah dibuat sebelumnya sehingga sistem dapat berjalan dengan normal dan tidak mengalami error.</p>
                                 </div>
                                 <div class="card-action">
                                     <form method="post" enctype="multipart/form-data">

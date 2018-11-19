@@ -19,32 +19,37 @@
                     .disp {
                         text-align: center;
                         margin: -.5rem 0;
+                        width: 100%;
+                    }
+                    nav {
+                        display: none
                     }
                     .hidd {
                         display: block
                     }
                     .logodisp {
-                        float: left;
-                        position: relative;
+                        position: absolute;
                         width: 80px;
                         height: 80px;
+                        left: 50px;
                         margin: 0 0 0 1.2rem;
-                    }
-                    #nama {
-                        font-size: 20px!important;
-                        text-transform: uppercase;
-                        font-weight: bold;
-                        margin: -2.5rem 0 -3.7rem 0;
                     }
                     .up {
                         font-size: 17px!important;
                         font-weight: normal;
+                        margin-top: 45px;
                         text-transform: uppercase
+                    }
+                    #nama {
+                        font-size: 20px!important;
+                        text-transform: uppercase;
+                        margin-top: 5px;
+                        font-weight: bold;
                     }
                     .status {
                         font-size: 17px!important;
                         font-weight: normal;
-                        margin-bottom: -.1rem;
+                        margin-top: -1.5rem;
                     }
                     #alamat {
                         margin-top: -15px;
@@ -52,7 +57,7 @@
                     }
                     .separator {
                         border-bottom: 2px solid #616161;
-                        margin: 1rem 0 -.7rem;
+                        margin: 1rem 0;
                     }
                 }
             </style>';
@@ -115,100 +120,83 @@
                     <!-- Row form END -->
 
                     <div class="row agenda">
+                    <div class="disp hidd">';
+                        $query2 = mysqli_query($config, "SELECT institusi, nama, status, alamat, logo FROM tbl_instansi");
+                        list($institusi, $nama, $status, $alamat, $logo) = mysqli_fetch_array($query2);
+                            echo '<img class="logodisp" src="./upload/'.$logo.'"/>';
+
+                            echo '<h6 class="up">'.$institusi.'</h6>';
+
+                            echo '<h5 class="nama" id="nama">'.$nama.'</h5><br/>';
+
+                            echo '<h6 class="status">'.$status.'</h6>';
+
+                            echo '<span id="alamat">'.$alamat.'</span>
+
+                    </div>
+                    <div class="separator"></div>
+                    <h5 class="hid">AGENDA SURAT MASUK</h5>';
+
+                    $y = substr($dari_tanggal,0,4);
+                    $m = substr($dari_tanggal,5,2);
+                    $d = substr($dari_tanggal,8,2);
+                    $y2 = substr($sampai_tanggal,0,4);
+                    $m2 = substr($sampai_tanggal,5,2);
+                    $d2 = substr($sampai_tanggal,8,2);
+
+                    if($m == "01"){
+                        $nm = "Januari";
+                    } elseif($m == "02"){
+                        $nm = "Februari";
+                    } elseif($m == "03"){
+                        $nm = "Maret";
+                    } elseif($m == "04"){
+                        $nm = "April";
+                    } elseif($m == "05"){
+                        $nm = "Mei";
+                    } elseif($m == "06"){
+                        $nm = "Juni";
+                    } elseif($m == "07"){
+                        $nm = "Juli";
+                    } elseif($m == "08"){
+                        $nm = "Agustus";
+                    } elseif($m == "09"){
+                        $nm = "September";
+                    } elseif($m == "10"){
+                        $nm = "Oktober";
+                    } elseif($m == "11"){
+                        $nm = "November";
+                    } elseif($m == "12"){
+                        $nm = "Desember";
+                    }
+
+                    if($m2 == "01"){
+                        $nm2 = "Januari";
+                    } elseif($m2 == "02"){
+                        $nm2 = "Februari";
+                    } elseif($m2 == "03"){
+                        $nm2 = "Maret";
+                    } elseif($m2 == "04"){
+                        $nm2 = "April";
+                    } elseif($m2 == "05"){
+                        $nm2 = "Mei";
+                    } elseif($m2 == "06"){
+                        $nm2 = "Juni";
+                    } elseif($m2 == "07"){
+                        $nm2 = "Juli";
+                    } elseif($m2 == "08"){
+                        $nm2 = "Agustus";
+                    } elseif($m2 == "09"){
+                        $nm2 = "September";
+                    } elseif($m2 == "10"){
+                        $nm2 = "Oktober";
+                    } elseif($m2 == "11"){
+                        $nm2 = "November";
+                    } elseif($m2 == "12"){
+                        $nm2 = "Desember";
+                    }
+                    echo '
                         <div class="col s10">
-                            <div class="disp hidd">';
-                                $query2 = mysqli_query($config, "SELECT institusi, nama, status, alamat, logo FROM tbl_instansi");
-                                list($institusi, $nama, $status, $alamat, $logo) = mysqli_fetch_array($query2);
-                                if(!empty($logo)){
-                                    echo '<img class="logodisp" src="./upload/'.$logo.'"/>';
-                                } else {
-                                    echo '<img class="logodisp" src="./asset/img/logo.png"/>';
-                                }
-                                if(!empty($institusi)){
-                                    echo '<h6 class="up">'.$institusi.'</h6>';
-                                } else {
-                                    echo '<h6 class="up">Yayasan Pendidikan Dan Sosial Al - Husna</h6>';
-                                }
-                                if(!empty($nama)){
-                                    echo '<h5 class="up" id="nama">'.$nama.'</h5><br/>';
-                                } else {
-                                    echo '<h5 class="up" id="nama">SMK Al - Husna Loceret Nganjuk</h5><br/>';
-                                }
-                                if(!empty($status)){
-                                    echo '<h6 class="status">'.$status.'</h6>';
-                                } else {
-                                    echo '<h6 class="status">Akta Notaris: SLAMET , SH, M.Hum No. 119/2013</h6>';
-                                }
-                                if(!empty($alamat)){
-                                    echo '<span id="alamat">'.$alamat.'</span>';
-                                } else {
-                                    echo '<span id="alamat">Jalan Raya Kediri Gg. Kwagean No. 04 Loceret Telp/Fax. (0358) 329806 Nganjuk 64471</span>';
-                                }
-                                echo '
-                            </div>
-                            <div class="separator"></div>
-                            <h5 class="hid">AGENDA SURAT MASUK</h5>';
-
-                            $y = substr($dari_tanggal,0,4);
-                            $m = substr($dari_tanggal,5,2);
-                            $d = substr($dari_tanggal,8,2);
-                            $y2 = substr($sampai_tanggal,0,4);
-                            $m2 = substr($sampai_tanggal,5,2);
-                            $d2 = substr($sampai_tanggal,8,2);
-
-                            if($m == "01"){
-                                $nm = "Januari";
-                            } elseif($m == "02"){
-                                $nm = "Februari";
-                            } elseif($m == "03"){
-                                $nm = "Maret";
-                            } elseif($m == "04"){
-                                $nm = "April";
-                            } elseif($m == "05"){
-                                $nm = "Mei";
-                            } elseif($m == "06"){
-                                $nm = "Juni";
-                            } elseif($m == "07"){
-                                $nm = "Juli";
-                            } elseif($m == "08"){
-                                $nm = "Agustus";
-                            } elseif($m == "09"){
-                                $nm = "September";
-                            } elseif($m == "10"){
-                                $nm = "Oktober";
-                            } elseif($m == "11"){
-                                $nm = "November";
-                            } elseif($m == "12"){
-                                $nm = "Desember";
-                            }
-
-                            if($m2 == "01"){
-                                $nm2 = "Januari";
-                            } elseif($m2 == "02"){
-                                $nm2 = "Februari";
-                            } elseif($m2 == "03"){
-                                $nm2 = "Maret";
-                            } elseif($m2 == "04"){
-                                $nm2 = "April";
-                            } elseif($m2 == "05"){
-                                $nm2 = "Mei";
-                            } elseif($m2 == "06"){
-                                $nm2 = "Juni";
-                            } elseif($m2 == "07"){
-                                $nm2 = "Juli";
-                            } elseif($m2 == "08"){
-                                $nm2 = "Agustus";
-                            } elseif($m2 == "09"){
-                                $nm2 = "September";
-                            } elseif($m2 == "10"){
-                                $nm2 = "Oktober";
-                            } elseif($m2 == "11"){
-                                $nm2 = "November";
-                            } elseif($m2 == "12"){
-                                $nm2 = "Desember";
-                            }
-                            echo '
-
                             <p class="warna agenda">Agenda Surat Masuk dari tanggal <strong>'.$d." ".$nm." ".$y.'</strong> sampai dengan tanggal <strong>'.$d2." ".$nm2." ".$y2.'</strong></p>
                         </div>
                         <div class="col s2">

@@ -36,15 +36,15 @@
                 // download file hasil backup
                 if(isset($_REQUEST['nama_file'])){
 
-                    $back_dir = "./";
-                	$file = $back_dir.$_REQUEST['nama_file'];
-
-                    $x = explode('.', $file);
-                    $eks = strtolower(end($x));
+                    $back_dir = "backup/";
+                	$file     = $back_dir.$_REQUEST['nama_file'];
+                    $x        = explode('.', $file);
+                    $eks      = strtolower(end($x));
 
                     if($eks == 'sql'){
 
                     	if(file_exists($file)){
+
                     		header('Content-Description: File Transfer');
                     		header('Content-Type: application/octet-stream');
                     		header('Content-Disposition: attachment; filename='.($file));
@@ -109,7 +109,7 @@
 
                                 for($j=0; $j<$num_fields; $j++){
                                     $row[$j] = addslashes($row[$j]);
-                                    $row[$j] = ereg_replace("\n","\\n",$row[$j]);
+                                    $row[$j] = str_replace("\n","\n",$row[$j]);
 
                                     if(isset($row[$j])){
                                         $return.= '"'.$row[$j].'"' ;
@@ -127,24 +127,26 @@
                     }
 
                     //otomatis menyimpan hasil backup database dalam root folder aplikasi
-                    $nama_file;
-                    $handle = fopen($nama_file,'w+');
+                    $dir = "backup/";
+                    if (! is_dir($dir)) {
+                        mkdir($dir, 0755);
+                    }
+
+                    $file = $dir . $nama_file;
+                    $handle = fopen($file,'w+');
                     fwrite($handle,$return);
                     fclose($handle);
                 }
 
                 //nama database hasil backup
                 $database = 'Backup';
-                $file = $database.'_'.date("d_M_Y").'_'.time().'.sql';
+                $file = $database.'_'.date("Y-m-d_His").'.sql';
 
                 //backup database
                 if(isset($_REQUEST['backup'])){
 
-                    //konfigurasi database dan backup semua tabel
-                    backup("localhost","root","root","ams_native",$file,"*");
-
-                    //backup hanya tabel tertentu
-                    //backup("localhost","user_database","pass_database","nama_database",$file,"tabel1,tabel2,tabel3");
+                    //konfigurasi backup database: host, user, password, database
+                    backup("localhost","root","masrud.com","ams_native",$file,"*");
 
                   echo '<!-- Row form Start -->
                         <div class="row">
@@ -174,7 +176,7 @@
                                     <span class="card-title black-text">Backup Database</span>
                                     <p class="kata">Lakukan backup database secara berkala untuk membuat cadangan database yang bisa direstore kapan saja ketika dibutuhkan. Silakan klik tombol <strong>"Backup"</strong> untuk memulai proses backup data. Setelah proses backup selesai, silakan download file backup database tersebut dan simpan di lokasi yang aman.<span class="red-text"><strong>*</strong></span></p><br/>
 
-                                    <p><span class="red-text"><strong>*</strong></span> Sangat tidak disarankan menyimpan file backup database dalam my documents / Local Disk C.</p>
+                                    <p><span class="red-text"><strong>*</strong></span> Tidak disarankan menyimpan file backup database dalam my documents / Local Disk C.</p>
                                 </div>
                                 <div class="card-action">
                                     <form method="post" enctype="multipart/form-data" >

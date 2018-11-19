@@ -15,33 +15,13 @@
     <?php
       $query = mysqli_query($config, "SELECT logo from tbl_instansi");
       list($logo) = mysqli_fetch_array($query);
-      if(!empty($logo)){
-          echo '<link rel="icon" href="./upload/'.$logo.'" type="image/x-icon">';
-      } else {
-          echo '<link rel="icon" href="./asset/img/logo.png" type="image/x-icon">';
-      }
+       echo '<link rel="icon" href="./upload/'.$logo.'" type="image/x-icon">';
     ?>
     <!-- Meta END -->
 
     <!--[if lt IE 9]>
     <script src="../asset/js/html5shiv.min.js"></script>
     <![endif]-->
-
-    <!-- Resources Hint START -->
-    <link rel="preload" href="./asset/css/materialize.css" as="style">
-    <link rel="preload" href="./asset/font/material-icons/MaterialIcons-Regular.woff2" as="font">
-    <link rel="preload" href="./asset/font/roboto/Roboto-Regular.ttf" as="font">
-    <link rel="preload" href="./asset/font/roboto/Roboto-Medium.ttf" as="font">
-    <link rel="preload" href="./asset/font/roboto/Roboto-Light.ttf" as="font">
-    <link rel="preload" href="./asset/css/jquery-ui.css" as="font">
-    <link rel="preload" href="./upload/<?=$logo?>" as="image">
-    <link rel="preload" href="./asset/img/background.jpg" as="image">
-    <link rel="preload" href="./asset/js/jquery-2.1.1.min.js" as="script">
-    <link rel="preload" href="./asset/js/materialize.min.js" as="script">
-    <link rel="preload" href="./asset/js/bootstrap.min.js" as="script">
-    <link rel="preload" href="./asset/js/pace.min.js" as="script">
-    <link rel="preload" href="./asset/js/jquery-ui.min.js" as="script">
-    <!-- Resources HintSTART -->
 
     <!-- Global style START -->
     <link type="text/css" rel="stylesheet" href="./asset/css/materialize.min.css">
@@ -193,6 +173,13 @@
         	left: 25px;
         	top: -20px;
         	border-bottom: 10px solid #ffcdd2;
+        }
+        .round-in-box > input {
+            color: inherit;
+        }
+        .round-in-box > input[type="search"] {
+            background: rgba(244, 244, 244, 0.5);
+            border-radius: 100px;
         }
         .pace {
             -webkit-pointer-events: none;

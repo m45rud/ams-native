@@ -9,7 +9,18 @@
     }
     require('include/config.php');
 ?>
+<!--
 
+Name        : Aplikasi Sederhana Manajemen Surat Menyurat
+Version     : v1.0
+Description : Aplikasi untuk mencatat data surat masuk dan keluar secara digital.
+Date        : 2016
+Developer   : M. Rudianto
+Phone/WA    : 0852-3290-4156
+Email       : rudi@masrud.com
+Website     : https://masrud.com
+
+-->
 <!doctype html>
 <html lang="en">
 
@@ -185,21 +196,9 @@
                     <div class="col s12">
                         <div class="card-content">
                             <h5 class="center" id="title">Aplikasi Manajemen Surat</h5>
-                            <?php
-                                if(!empty($data['logo'])){
-                                    echo '<img id="logo" src="./upload/'.$data['logo'].'"/>';
-                                } else {
-                                    echo '<img id="logo" src="./asset/img/logo.png"/>';
-                                }
-                            ?>
+                            <?php echo '<img id="logo" src="./upload/'.$data['logo'].'">';?>
                             <h4 class="center" id="smk">
-                            <?php
-                                if(!empty($data['nama'])){
-                                    echo ''.$data['nama'].'';
-                                } else {
-                                    echo 'SMK AL - Husna Loceret Nganjuk';
-                                }
-                             ?>
+                            <?php echo ''.$data['nama'].'';?>
                             </h4>
                             <div class="batas"></div>
                         </div>
@@ -268,12 +267,12 @@
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix md-prefix">account_circle</i>
-                            <input id="username" type="text" class="validate" name="username" required autocomplete="off">
+                            <input id="username" type="text" class="validate" name="username" required>
                             <label for="username">Username</label>
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix md-prefix">lock</i>
-                            <input id="password" type="password" class="validate" name="password" required autocomplete="off">
+                            <input id="password" type="password" class="validate" name="password" required">
                             <label for="password">Password</label>
                         </div>
                         <div class="input-field col s12">

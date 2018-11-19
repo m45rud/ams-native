@@ -20,31 +20,12 @@
                 $query = mysqli_query($config, "SELECT * FROM tbl_instansi");
                 while($data = mysqli_fetch_array($query)){
             ?>
-            <span class="white-text">&copy; <?php echo date("Y"); ?>
-                <?php
-                    if(!empty($data['nama'])){
-                        echo $data['nama']/* .' &nbsp;|&nbsp; <a class="white-text" href="http://masrud.com" target="_blank">By M. Rudianto</a>'*/;
-                    } else {
-                        echo 'SMK AL - Husna Loceret Nganjuk  &nbsp;|&nbsp; <a class="white-text" href="http://masrud.com" target="_blank">By M. Rudianto</a>';
-                    }
-                ?>
-            </a>
-            </span>
-            <div class="right hide-on-small-only">
-                <?php
-                    if(!empty($data['website'])){
-                        echo '<i class="material-icons md-12">public</i> '.substr($data['website'],7,50).' &nbsp;&nbsp;';
-                    } else {
-                        echo '<i class="material-icons md-12">public</i> www.smkalhusnaloceret.sch.id &nbsp;&nbsp;';
-                    }
-                    if(!empty($data['email'])){
-                        echo '<i class="material-icons">mail_outline</i> '.$data['email'].'';
-                    } else {
-                        echo '<i class="material-icons">mail_outline</i>  info@smkalhusnaloceret.sch.id';
-                    }
-                }
-                ?>
-            </div>
+                <span class="white-text">&copy; <?php echo date("Y"); ?><?php echo $data['nama'] .' &nbsp;|&nbsp; <a class="white-text" href="https://masrud.com" target="_blank">By M. Rudianto</a></a></span>
+                ';?>
+                <div class="right hide-on-small-only">
+                    <?php echo '<i class="material-icons md-12">public</i> '.$data['website'].' &nbsp;&nbsp;<i class="material-icons">mail_outline</i> '.$data['email'].'';?>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </footer>

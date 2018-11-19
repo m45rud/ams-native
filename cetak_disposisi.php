@@ -84,6 +84,9 @@
                     font-size: 12px;
                     color: #212121;
                 }
+                nav {
+                    display: none;
+                }
                 table {
                     width: 100%;
                     font-size: 12px;
@@ -162,36 +165,16 @@
         <body onload="window.print()">
 
         <!-- Container START -->
-        <div class="container">
             <div id="colres">
                 <div class="disp">';
                     $query2 = mysqli_query($config, "SELECT institusi, nama, status, alamat, logo FROM tbl_instansi");
                     list($institusi, $nama, $status, $alamat, $logo) = mysqli_fetch_array($query2);
-                    if(!empty($logo)){
                         echo '<img class="logodisp" src="./upload/'.$logo.'"/>';
-                    } else {
-                        echo '<img class="logodisp" src="./asset/img/logo.png"/>';
-                    }
-                    if(!empty($institusi)){
                         echo '<h6 class="up">'.$institusi.'</h6>';
-                    } else {
-                        echo '<h6 class="up">Yayasan Pendidikan Dan Sosial Al - Husna</h6>';
-                    }
-                    if(!empty($nama)){
                         echo '<h5 class="up" id="nama">'.$nama.'</h5><br/>';
-                    } else {
-                        echo '<h5 class="up" id="nama">SMK Al - Husna Loceret Nganjuk</h5><br/>';
-                    }
-                    if(!empty($status)){
                         echo '<h6 class="status">'.$status.'</h6>';
-                    } else {
-                        echo '<h6 class="status">Akta Notaris: SLAMET , SH, M.Hum No. 119/2013</h6>';
-                    }
-                    if(!empty($alamat)){
-                        echo '<span id="alamat">'.$alamat.'</span>';
-                    } else {
                         echo '<span id="alamat">Jalan Raya Kediri Gg. Kwagean No. 04 Loceret Telp/Fax. (0358) 329806 Nganjuk 64471</span>';
-                    }
+
                     echo '
                 </div>
                 <div class="separator"></div>';
@@ -262,7 +245,38 @@
                                 <td id="right"><strong>Isi Ringkas</strong></td>
                                 <td id="left" colspan="2">: '.$row['isi'].'</td>
                             </tr>
-                            <tr>
+                            <tr>';
+                            $y = substr($row['tgl_diterima'],0,4);
+                            $m = substr($row['tgl_diterima'],5,2);
+                            $d = substr($row['tgl_diterima'],8,2);
+
+                            if($m == "01"){
+                                $nm = "Januari";
+                            } elseif($m == "02"){
+                                $nm = "Februari";
+                            } elseif($m == "03"){
+                                $nm = "Maret";
+                            } elseif($m == "04"){
+                                $nm = "April";
+                            } elseif($m == "05"){
+                                $nm = "Mei";
+                            } elseif($m == "06"){
+                                $nm = "Juni";
+                            } elseif($m == "07"){
+                                $nm = "Juli";
+                            } elseif($m == "08"){
+                                $nm = "Agustus";
+                            } elseif($m == "09"){
+                                $nm = "September";
+                            } elseif($m == "10"){
+                                $nm = "Oktober";
+                            } elseif($m == "11"){
+                                $nm = "November";
+                            } elseif($m == "12"){
+                                $nm = "Desember";
+                            }
+
+                            echo '
                                 <td id="right"><strong>Diterima Tanggal</strong></td>
                                 <td id="left" style="border-right: none;">: '.$d." ".$nm." ".$y.'</td>
                                 <td id="left"><strong>No. Agenda</strong> : '.$row['no_agenda'].'</td>
@@ -320,7 +334,6 @@
             </div>
         </div>
         <div class="jarak2"></div>
-    </div>
     <!-- Container END -->
 
     </body>';

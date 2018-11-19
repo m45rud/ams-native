@@ -66,7 +66,7 @@
                                         <form method="post" action="?page=tsm">
                                             <div class="input-field round-in-box">
                                                 <input id="search" type="search" name="cari" placeholder="Ketik dan tekan enter mencari data..." required>
-                                                <label for="search"><i class="material-icons">search</i></label>
+                                                <label for="search"><i class="material-icons md-dark">search</i></label>
                                                 <input type="submit" name="submit" class="hidden">
                                             </div>
                                         </form>
