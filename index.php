@@ -15,7 +15,7 @@
 <!--
 
 Name        : Aplikasi Sederhana Manajemen Surat Menyurat
-Version     : v1.0
+Version     : v1.0.0
 Description : Aplikasi untuk mencatat data surat masuk dan keluar secara digital.
 Date        : 2016
 Developer   : M. Rudianto
