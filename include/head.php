@@ -1,8 +1,11 @@
 <?php
     //cek session
     if(!empty($_SESSION['admin'])){
+
+        require_once 'include/config.php';
+        require_once 'include/functions.php';
+        $config = conn($host, $username, $password, $database);
 ?>
-<?php require('include/config.php'); ?>
 
 <head>
 
@@ -15,7 +18,7 @@
     <?php
       $query = mysqli_query($config, "SELECT logo from tbl_instansi");
       list($logo) = mysqli_fetch_array($query);
-       echo '<link rel="icon" href="./upload/'.$logo.'" type="image/x-icon">';
+       echo '<link rel="shortcut icon" href="upload/'.$logo.'">';
     ?>
     <!-- Meta END -->
 
@@ -24,8 +27,8 @@
     <![endif]-->
 
     <!-- Global style START -->
-    <link type="text/css" rel="stylesheet" href="./asset/css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="./asset/css/jquery-ui.css">
+    <link type="text/css" rel="stylesheet" href="asset/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="asset/css/jquery-ui.css">
     <style type="text/css">
         body {
             background: #fff;
@@ -149,6 +152,12 @@
         .waves-green {
             margin-bottom: -20px!important;
         }
+        .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+        .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+        .autocomplete-selected { background: #F0F0F0; }
+        .autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+        .autocomplete-group { padding: 2px 5px; }
+        .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
         div.callout {
         	height: auto;
         	width: auto;
@@ -180,6 +189,9 @@
         .round-in-box > input[type="search"] {
             background: rgba(244, 244, 244, 0.5);
             border-radius: 100px;
+        }
+        .dev {
+            padding-left: 1rem;
         }
         .pace {
             -webkit-pointer-events: none;
@@ -213,6 +225,10 @@
             height: 3px;
             background: #2196f3;
             pointer-events: none;
+        }
+        .footer-copyright {
+            line-height: 2.25;
+            padding: .75rem 0;
         }
         @media print{
             .side-nav,

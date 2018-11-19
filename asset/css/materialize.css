@@ -2709,15 +2709,6 @@ input-field round-in-box input#search {
 }
 
 }
-.footer-copyright
-{
-	overflow:hidden;
-	height:50px;
-	font-size:1em;
-	line-height:50px;
-	color:rgba(255,255,255,0.8);
-	background-color:rgba(51,51,51,0.08)
-}
 	table,th,td
 {
 	border:none

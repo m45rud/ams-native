@@ -7,7 +7,10 @@
         header("Location: ./admin.php");
         die();
     }
-    require('include/config.php');
+
+    require_once 'include/config.php';
+    require_once 'include/functions.php';
+    $config = conn($host, $username, $password, $database);
 ?>
 <!--
 
@@ -36,11 +39,7 @@ Website     : https://masrud.com
     <?php
         $query = mysqli_query($config, "SELECT logo from tbl_instansi");
         list($logo) = mysqli_fetch_array($query);
-        if(!empty($logo)){
-            echo '<link rel="icon" href="./upload/'.$logo.'" type="image/x-icon">';
-        } else {
-            echo '<link rel="icon" href="./asset/img/logo.png" type="image/x-icon">';
-        }
+        echo '<link rel="shortcut icon" href="upload/'.$logo.'">';
     ?>
     <!-- Meta END -->
 
@@ -49,7 +48,7 @@ Website     : https://masrud.com
     <![endif]-->
 
     <!-- Global style START -->
-    <link type="text/css" rel="stylesheet" href="./asset/css/materialize.css">
+    <link type="text/css" rel="stylesheet" href="asset/css/materialize.css">
     <style type="text/css">
         body {
             background: #fff;
@@ -196,7 +195,7 @@ Website     : https://masrud.com
                     <div class="col s12">
                         <div class="card-content">
                             <h5 class="center" id="title">Aplikasi Manajemen Surat</h5>
-                            <?php echo '<img id="logo" src="./upload/'.$data['logo'].'">';?>
+                            <?php echo '<img id="logo" src="upload/'.$data['logo'].'">';?>
                             <h4 class="center" id="smk">
                             <?php echo ''.$data['nama'].'';?>
                             </h4>
@@ -214,7 +213,7 @@ Website     : https://masrud.com
                             //validasi form kosong
                             if($_REQUEST['username'] == "" || $_REQUEST['password'] == ""){
                                 echo '<div class="upss red-text"><i class="material-icons">error_outline</i> <strong>ERROR!</strong> Username dan Password wajib diisi.
-                                <a class="btn-large waves-effect waves-light blue-grey col s11" href="./" style="margin: 20px 0 0 5px;"><i class="material-icons md-24">arrow_back</i> Kembali ke login form</a></div>';
+                                <a class="btn-large waves-effect waves-light blue-grey col s11" href="" style="margin: 20px 0 0 5px;"><i class="material-icons md-24">arrow_back</i> Kembali ke login form</a></div>';
                             } else {
 
                                 $username = trim(htmlspecialchars(mysqli_real_escape_string($config, $_REQUEST['username'])));
@@ -299,9 +298,9 @@ Website     : https://masrud.com
     <!-- Container END -->
 
     <!-- Javascript START -->
-    <script type="text/javascript" src="./asset/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="./asset/js/materialize.min.js"></script>
-    <script type="text/javascript" src="./asset/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="asset/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="asset/js/materialize.min.js"></script>
+    <script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
     <script data-pace-options='{ "ajax": false }' src='./asset/js/pace.min.js'></script>
 
     <!-- Jquery auto hide untuk menampilkan pesan error -->

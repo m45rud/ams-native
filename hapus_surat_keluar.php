@@ -84,7 +84,7 @@
         				                <tr>
         				                    <td width="13%">Tanggal Surat</td>
         				                    <td width="1%">:</td>
-        				                    <td width="86%">'.$tgl = date('d M Y ', strtotime($row['tgl_surat'])).'</td>
+        				                    <td width="86%">'.indoDate($row['tgl_surat']).'</td>
         				                </tr>
                                         <tr>
                                             <td width="13%">Keterangan</td>

@@ -74,79 +74,17 @@
                 }
 
                 // proses backup  database dilakukan oleh Fungsi
-                function backup($host,$user,$pass,$name,$nama_file,$tables){
 
-                    //untuk koneksi database
-                    $return = "";
-                    $link = mysqli_connect($host,$user,$pass,$name);
-
-                    //backup semua tabel database
-                    if($tables == '*'){
-                        $tables = array();
-                        $result = mysqli_query($link, 'SHOW TABLES');
-                        while($row = mysqli_fetch_row($result)){
-                            $tables[] = $row[0];
-                        }
-                    } else {
-
-                        //backup tabel tertentu
-                        $tables = is_array($tables) ? $tables : explode(',',$tables);
-                    }
-
-                    //looping table
-                    foreach($tables as $table){
-                        $result = mysqli_query($link, 'SELECT * FROM '.$table);
-                        $num_fields = mysqli_num_fields($result);
-
-                        $return.= 'DROP TABLE '.$table.';';
-                        $row2 = mysqli_fetch_row(mysqli_query($link, 'SHOW CREATE TABLE '.$table));
-                        $return.= "\n\n".$row2[1].";\n\n";
-
-                        //looping field table
-                        for($i = 0; $i < $num_fields; $i++){
-                            while($row = mysqli_fetch_row($result)){
-                                $return.= 'INSERT INTO '.$table.' VALUES(';
-
-                                for($j=0; $j<$num_fields; $j++){
-                                    $row[$j] = addslashes($row[$j]);
-                                    $row[$j] = str_replace("\n","\n",$row[$j]);
-
-                                    if(isset($row[$j])){
-                                        $return.= '"'.$row[$j].'"' ;
-                                    } else {
-                                        $return.= '""';
-                                    }
-                                    if ($j<($num_fields-1)){
-                                        $return.= ',';
-                                    }
-                                }
-                                $return.= ");\n";
-                            }
-                        }
-                        $return.="\n\n\n";
-                    }
-
-                    //otomatis menyimpan hasil backup database dalam root folder aplikasi
-                    $dir = "backup/";
-                    if (! is_dir($dir)) {
-                        mkdir($dir, 0755);
-                    }
-
-                    $file = $dir . $nama_file;
-                    $handle = fopen($file,'w+');
-                    fwrite($handle,$return);
-                    fclose($handle);
-                }
 
                 //nama database hasil backup
-                $database = 'Backup';
-                $file = $database.'_'.date("Y-m-d_His").'.sql';
+                $db = 'Backup';
+                $file = $db.'_'.date("Y-m-d_His").'.sql';
 
                 //backup database
                 if(isset($_REQUEST['backup'])){
 
                     //konfigurasi backup database: host, user, password, database
-                    backup("localhost","root","masrud.com","ams_native",$file,"*");
+                    backup($host, $username, $password, $database, $file, "*");
 
                   echo '<!-- Row form Start -->
                         <div class="row">

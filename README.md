@@ -10,14 +10,9 @@ Aplikasi ini untuk mengelola pencatatan surat masuk dan surat keluar (disposisi)
 - Multilevel user
 - Fitur backup dan restore database
 
-Aplikasi ini dibuat dengan bahasa pemrograman <a href="http://php.net/" target="_blank">PHP</a> dan database <a href="https://en.wikipedia.org/wiki/MySQLi" target="_blank">MySQLi</a> dengan style <a href="https://en.wikipedia.org/wiki/Procedural_programming" target="_blank">prosedural</a>. Sedangkan cssnya menggunakan <a href="http://materializecss.com/" target="_blank">Materializecss</a> dan <a href="https://www.google.com/design/icons/" target="_blank">Google Material Icons</a>.
+Sebelum menggunakan aplikasi ini silakan atur konfigurasi database terlebih dahulu. Caranya,
 
-Untuk menggunakan aplikasi ini silakan lakukan beberapa konfigurasi terlebih dahulu.
-
-- Konfigurasi database sistem: buka folder **include** -> **config.php** lalu setting databasenya.
-- Konfigurasi kode klasifikasi surat: buka file **kode.php** lalu setting databasenya.
-- Konfigurasi fitur backup database: buka file **backup.php** lalu setting databasenya.
-- Konfigurasi fitur restore database: buka file **restore.php** lalu setting databasenya.
+- Buka folder **include** lalu edit file **config.php** lalu sesuaikan `username`, `password` dan `database` dengan yang Anda gunakan.
 
 Untuk tampilan terbaik, gunakan browser Google Chrome versi terbaru.
 
@@ -25,4 +20,4 @@ Inspired by Nur Akhwam.
 
 ---
 
-Ini adalah source code dari https://masrud.com/post/aplikasi-manajemen-surat-php-mysqli
+Ini adalah source code dari postingan https://masrud.com/post/aplikasi-manajemen-surat-php-mysqli

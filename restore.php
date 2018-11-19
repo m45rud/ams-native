@@ -87,85 +87,9 @@
                     unset($_SESSION['succRestore']);
                 }
 
-                // proses restore database dilakukan oleh fungsi
-                function restore($file){
-                	global $rest_dir;
-
-                    //konfigurasi restore database: host, user, password, database
-                	$koneksi=mysqli_connect("localhost","root","masrud.com","ams_native");
-
-                	$nama_file	= $file['name'];
-                	$ukrn_file	= $file['size'];
-                	$tmp_file	= $file['tmp_name'];
-
-                	if($nama_file == "" || $_REQUEST['password'] == ""){
-                        $_SESSION['errEmpty'] = 'ERROR! Semua Form wajib diisi';
-                        header("Location: ./admin.php?page=sett&sub=rest");
-                        die();
-                    } else {
-
-                        $password = $_REQUEST['password'];
-                        $id_user = $_SESSION['id_user'];
-
-                        $query = mysqli_query($koneksi, "SELECT password FROM tbl_user WHERE id_user='$id_user' AND password=MD5('$password')");
-                        if(mysqli_num_rows($query) > 0){
-
-                    		$alamatfile	= $rest_dir.$nama_file;
-                    		$templine	= array();
-
-                            $ekstensi = array('sql');
-                            $nama_file	= $file['name'];
-                            $x = explode('.', $nama_file);
-                            $eks = strtolower(end($x));
-
-                            //validasi tipe file
-                            if(in_array($eks, $ekstensi) == true){
-
-                        		if(move_uploaded_file($tmp_file , $alamatfile)){
-
-                        			$templine	= '';
-                        			$lines		= file($alamatfile);
-
-                        			foreach ($lines as $line){
-                        				if(substr($line, 0, 2) == '--' || $line == '')
-                        					continue;
-
-                        				$templine .= $line;
-
-                        				if(substr(trim($line), -1, 1) == ';'){
-                        					mysqli_query($koneksi, $templine);
-                        					$templine = '';
-                        				}
-                        			}
-
-                                    unlink($nama_file);
-                                    $_SESSION['succRestore'] = 'SUKSES! Database berhasil direstore';
-                                    header("Location: ./admin.php?page=sett&sub=rest");
-                                    die();
-                        		} else {
-                                    $_SESSION['errUpload'] = 'ERROR! Proses upload database gagal';
-                                    header("Location: ./admin.php?page=ref&act=imp");
-                                    die();
-                    		    }
-                            } else {
-                                $_SESSION['errFormat'] = 'ERROR! Format file yang diperbolehkan hanya *.SQL';
-                                header("Location: ./admin.php?page=sett&sub=rest");
-                                die();
-                            }
-                        } else {
-                            echo '<script language="javascript">
-                                    window.alert("ERROR! Password salah. Anda mungkin tidak memiliki akses ke halaman ini");
-                                    window.location.href="./logout.php";
-                                  </script>';
-                        }
-                	}
-                }
-
                 //restore database
                 if(isset($_POST['restore'])){
-
-                    restore($_FILES['file']);
-
+                    restore($host, $username, $password, $database, $_FILES['file']);
                 } else {
                     echo '
 

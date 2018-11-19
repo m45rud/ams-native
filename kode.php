@@ -1,20 +1,38 @@
 <?php
-    $host = "localhost";
-    $username = "root";
-    $password = "masrud.com";
-    $database = "ams_native";
-    $config = mysqli_connect($host, $username, $password, $database);
+require_once 'include/config.php';
+require_once 'include/functions.php';
 
-    if(!$config){
-        die("Koneksi database gagal: " . mysqli_connect_error());
+// Cegak akses langsung ke source Ajax.
+if ( isset( $_SERVER['HTTP_X_REQUESTED_WITH'] ) && ( $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest' ) ) {
+
+    // Set header type konten.
+    header("Content-Type: application/json; charset=UTF-8");
+
+    // Koneksi ke database.
+    $conn = conn($host, $username, $password, $database);
+
+    // Deklarasi variable keyword kode.
+    $kode = $_GET["query"];
+
+    // Query ke database.
+    $query = $conn->query("SELECT * FROM tbl_klasifikasi WHERE kode LIKE '%$kode%' OR nama LIKE '%$kode%' ORDER BY kode DESC");
+    $result = $query->fetch_all(MYSQLI_ASSOC);
+
+    // Format bentuk data untuk autocomplete.
+    foreach($result as $data) {
+        $output['suggestions'][] = [
+            'value' => $data['kode'] . " " . $data['nama'],
+            'kode'  => $data['kode']
+        ];
     }
-    echo "";
 
-    $searchTerm = $_GET['term'];
-    $query = mysqli_query($config, "SELECT kode, nama FROM tbl_klasifikasi WHERE kode LIKE '%".$searchTerm."%' ORDER BY kode ASC");
-    while(list($kode, $nama) = mysqli_fetch_array($query)){
-        $data[] = $kode."                                                                                                                                                                                                                                                       ".$nama;
+    if (! empty($output)) {
+        // Encode ke format JSON.
+        echo json_encode($output);
     }
 
-    echo json_encode($data);
-?>
+} else {
+
+    // Tampilkan peringatan.
+    echo 'No direct access source!';
+}
