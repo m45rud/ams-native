@@ -146,7 +146,7 @@
                                     <tr>';
 
                                 //script untuk mencari data
-                                $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar WHERE isi LIKE '%$cari%' ORDER by id_surat DESC LIMIT $curr, $limit");
+                                $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar WHERE isi LIKE '%$cari%' ORDER by id_surat DESC LIMIT $curr, 15");
                                 if(mysqli_num_rows($query) > 0){
                                     $no = 1;
                                     while($row = mysqli_fetch_array($query)){
@@ -181,49 +181,6 @@
                             </div>
                         </div>
                         <!-- Row form END -->';
-
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar");
-                        $cdata = mysqli_num_rows($query);
-                        $cpg = ceil($cdata/$limit);
-
-                        echo '<!-- Pagination START -->
-                              <ul class="pagination">';
-
-                        if($cdata > $limit ){
-
-                            //first and previous pagging
-                            if($pg > 1){
-                                $prev = $pg - 1;
-                                echo '<li><a href="?page=tsk&pg=1"><i class="material-icons md-48">first_page</i></a></li>
-                                      <li><a href="?page=tsk&pg='.$prev.'"><i class="material-icons md-48">chevron_left</i></a></li>';
-                            } else {
-                                echo '<li class="disabled"><a href=""><i class="material-icons md-48">first_page</i></a></li>
-                                      <li class="disabled"><a href=""><i class="material-icons md-48">chevron_left</i></a></li>';
-                            }
-
-                            //perulangan pagging
-                            for($i=1; $i <= $cpg; $i++)
-                                if($i != $pg){
-                                    echo '<li class="waves-effect waves-dark"><a href="?page=tsk&pg='.$i.'"> '.$i.' </a></li>';
-                                } else {
-                                    echo '<li class="active waves-effect waves-dark"><a href="?page=tsk&pg='.$i.'"> '.$i.' </a></li>';
-                                }
-
-                            //last and next pagging
-                            if($pg < $cpg){
-                                $next = $pg + 1;
-                                echo '<li><a href="?page=tsk&pg='.$next.'"><i class="material-icons md-48">chevron_right</i></a></li>
-                                      <li><a href="?page=tsk&pg='.$cpg.'"><i class="material-icons md-48">last_page</i></a></li>';
-                            } else {
-                                echo '<li class="disabled"><a href=""><i class="material-icons md-48">chevron_right</i></a></li>
-                                      <li class="disabled"><a href=""><i class="material-icons md-48">last_page</i></a></li>';
-                            }
-                            echo '
-                            </ul>
-                            <!-- Pagination END -->';
-                    } else {
-                        echo '';
-                    }
 
                     } else {
 
@@ -345,12 +302,12 @@
                         }
 
                         //perulangan pagging
-                        for($i=1; $i <= $cpg; $i++)
-                            if($i != $pg){
-                                echo '<li class="waves-effect waves-dark"><a href="?page=tsk&pg='.$i.'"> '.$i.' </a></li>';
-                            } else {
-                                echo '<li class="active waves-effect waves-dark"><a href="?page=tsk&pg='.$i.'"> '.$i.' </a></li>';
+                        for ($i = 1; $i <= $cpg; $i++) {
+                            if ((($i >= $pg - 3) && ($i <= $pg + 3)) || ($i == 1) || ($i == $cpg)) {
+                                if ($i == $pg) echo '<li class="active waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
+                                else echo '<li class="waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
                             }
+                        }
 
                         //last and next pagging
                         if($pg < $cpg){

@@ -194,19 +194,35 @@
 
                     <!-- Row in form START -->
                     <div class="row">
-                        <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Isi dengan angka">
+                        <div class="input-field col s6">
                             <i class="material-icons prefix md-prefix">looks_one</i>
-                            <input id="no_agenda" type="number" class="validate" name="no_agenda" required>
-                                <?php
-                                    if(isset($_SESSION['no_agenda'])){
-                                        $no_agenda = $_SESSION['no_agenda'];
-                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$no_agenda.'</div>';
-                                        unset($_SESSION['no_agenda']);
+                            <?php
+                            echo '<input id="no_agenda" type="number" class="validate" name="no_agenda" value="';
+                                $sql = mysqli_query($config, "SELECT no_agenda FROM tbl_surat_masuk");
+                                $no_agenda = "1";
+                                if (mysqli_num_rows($sql) == 0){
+                                    echo $no_agenda;
+                                }
+
+                                $result = mysqli_num_rows($sql);
+                                $counter = 0;
+                                while(list($no_agenda) = mysqli_fetch_array($sql)){
+                                    if (++$counter == $result) {
+                                        $no_agenda++;
+                                        echo $no_agenda;
                                     }
-                                ?>
+                                }
+                                echo '" required>';
+
+                                if(isset($_SESSION['no_agenda'])){
+                                    $no_agenda = $_SESSION['no_agenda'];
+                                    echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$no_agenda.'</div>';
+                                    unset($_SESSION['no_agenda']);
+                                }
+                            ?>
                             <label for="no_agenda">Nomor Agenda</label>
                         </div>
-                        <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Diambil dari data referensi kode klasifikasi">
+                        <div class="input-field col s6">
                             <i class="material-icons prefix md-prefix">bookmark</i>
                             <input id="kode" type="text" class="validate" name="kode" required>
                                 <?php
@@ -230,7 +246,7 @@
                                 ?>
                             <label for="asal_surat">Asal Surat</label>
                         </div>
-                        <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Isi dengan huruf atau angka">
+                        <div class="input-field col s6">
                             <i class="material-icons prefix md-prefix">storage</i>
                             <input id="indeks" type="text" class="validate" name="indeks" required>
                                 <?php
@@ -296,7 +312,7 @@
                             <label for="keterangan">Keterangan</label>
                         </div>
                         <div class="input-field col s6">
-                            <div class="file-field input-field tooltipped" data-position="top" data-tooltip="Jika tidak ada file/scan gambar surat, biarkan kosong">
+                            <div class="file-field input-field">
                                 <div class="btn light-green darken-1">
                                     <span>File</span>
                                     <input type="file" id="file" name="file">

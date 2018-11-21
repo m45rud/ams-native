@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="card-action">
                                     <form method="post" enctype="multipart/form-data">
-                                        <div class="file-field input-field col m6 tooltipped" data-position="top" data-tooltip="Format file database yang diperbolehkan hanya *.SQL">
+                                        <div class="file-field input-field col m6">
                                             <div class="btn light-green darken-1">
                                                 <span>File</span>
                                                 <input type="file" name="file" accept=".sql" required>
@@ -114,10 +114,10 @@
                                                 <input class="file-path validate" placeholder="Upload file backup database sql" type="text">
                                              </div>
                                         </div>
-                                        <div class="input-field col s4 tooltipped" data-position="top" data-tooltip="Masukkan password Anda">
+                                        <div class="input-field col s4">
                                             <i class="material-icons prefix md-prefix">lock</i>
                                             <input id="password_lama" type="password" class="validate" name="password" required>
-                                            <label for="password_lama">Password</label>
+                                            <label for="password_lama">Masukkan password Anda</label>
                                         </div>&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button type="submit" class="btn-large blue waves-effect waves-light" name="restore">RESTORE <i class="material-icons">restore</i></button>
                                     </form>

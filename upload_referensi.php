@@ -29,59 +29,27 @@
 
                     if($eks == 'csv'){
 
-                        //jika tidak ingin menghapus data yang sudah ada
-                        if(isset($_REQUEST['cek'])){
-
-                            //upload file
-                            if(is_uploaded_file($file)){
-                                $_SESSION['succUpload'] = 'SUKSES! Data berhasil diimport';
-                            } else {
-                                $_SESSION['errUpload'] = 'ERROR! Proses upload data gagal';
-                                header("Location: ./admin.php?page=ref&act=imp");
-                                die();
-                            }
-
-                            //membuka file csv
-                            $handle = fopen($file, "r");
-                            $id_user = $_SESSION['id_user'];
-
-                            //parsing file csv
-                            while(($data = fgetcsv($handle, 1000, ",")) !== FALSE){
-
-                                //insert data ke dalam database
-                                $query = mysqli_query($config, "INSERT into tbl_klasifikasi(id_klasifikasi,kode,nama,uraian,id_user) values(null,'$data[1]','$data[2]','$data[3]','$id_user')");
-                            }
-                            fclose($handle);
-                            header("Location: ./admin.php?page=ref");
-                            die();
+                        //upload file
+                        if(is_uploaded_file($file)){
+                            $_SESSION['succUpload'] = 'SUKSES! Data berhasil diimport';
                         } else {
-
-                            //mengosongkan table klasifikasi
-                            mysqli_query($config, "TRUNCATE TABLE tbl_klasifikasi");
-
-                            //upload file
-                            if(is_uploaded_file($file)){
-                                $_SESSION['succUpload'] = 'SUKSES! Data berhasil diimport';
-                            } else {
-                                $_SESSION['errUpload'] = 'ERROR! Proses upload data gagal';
-                                header("Location: ./admin.php?page=ref&act=imp");
-                                die();
-                            }
-
-                            //membuka file csv
-                            $handle = fopen($file, "r");
-                            $id_user = $_SESSION['id_user'];
-
-                            //parsing file csv
-                            while(($data = fgetcsv($handle, 1000, ",")) !== FALSE){
-
-                                //insert data ke dalam database
-                                $query = mysqli_query($config, "INSERT into tbl_klasifikasi(id_klasifikasi,kode,nama,uraian,id_user) values('$data[0]','$data[1]','$data[2]','$data[3]','$id_user')");
-                            }
-                            fclose($handle);
-                            header("Location: ./admin.php?page=ref");
-                            die();
+                            $_SESSION['errUpload'] = 'ERROR! Proses upload data gagal';
+                            header("Location: ./admin.php?page=ref&act=imp");                                die();
                         }
+
+                        //membuka file csv
+                        $handle = fopen($file, "r");
+                        $id_user = $_SESSION['id_user'];
+
+                        //parsing file csv
+                        while(($data = fgetcsv($handle, 1000, ",")) !== FALSE){
+
+                            //insert data ke dalam database
+                             $query = mysqli_query($config, "INSERT into tbl_klasifikasi(id_klasifikasi,kode,nama,uraian,id_user) values(null,'$data[1]','$data[2]','$data[3]','$id_user')");
+                        }
+                        fclose($handle);
+                        header("Location: ./admin.php?page=ref");
+                        die();
 
                     } else {
                         $_SESSION['errFormat'] = 'ERROR! Format file yang diperbolehkan hanya *.CSV';
@@ -188,13 +156,11 @@
                                     <form method="post" enctype="multipart/form-data" >
                                         <a href="?page=ref&act=imp&download" name="download" class="waves-effect waves-light blue-text"><i class="material-icons">file_download</i> <strong>DOWNLOAD CONTOH FORMAT FILE CSV</strong></a>
                                     </form>
-                                </p><br/>
-
-                                <p class="kata"><span class="red-text"><i class="material-icons">error_outline</i> <strong>PERINGATAN!</strong></span><br/>Secara default, data yang ada akan diganti dengan data yang baru. Jika tidak ingin menghapus data yang sudah ada, silakan centang checkbox <i class="material-icons">check_box_outline_blank</i> dibawah form file.</p>
+                                </p>
                             </div>
                             <div class="card-action">
                                 <form method="post" enctype="multipart/form-data">
-                                    <div class="file-field input-field col m6 tooltipped" data-position="top" data-tooltip="Format file yang diperbolehkan hanya *.CSV">
+                                    <div class="file-field input-field col m6">
                                         <div class="btn light-green darken-1">
                                             <span>File</span>
                                             <input type="file" name="file" accept=".csv" required>
@@ -202,10 +168,6 @@
                                         <div class="file-path-wrapper">
                                             <input class="file-path validate" placeholder="Upload file csv referensi kode klasifikasi" type="text">
                                          </div>
-                                    </div>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <div class="col m12" style="margin-bottom: 25px;">
-                                        <input type="checkbox" id="cek" name="cek">
-                                        <label for="cek" class="kata" style="color: #444;">Centang jika tidak ingin menghapus data yang sudah ada</label>
                                     </div>
                                     <button type="submit" class="btn-large blue waves-effect waves-light" name="submit">IMPORT <i class="material-icons">file_upload</i></button>
                                 </form>

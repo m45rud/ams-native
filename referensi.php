@@ -155,7 +155,7 @@
                                 <tr>';
 
                             //script untuk menampilkan data
-                            $query = mysqli_query($config, "SELECT * FROM tbl_klasifikasi WHERE uraian LIKE '%$cari%' ORDER BY id_klasifikasi DESC LIMIT $curr, $limit");
+                            $query = mysqli_query($config, "SELECT * FROM tbl_klasifikasi WHERE uraian LIKE '%$cari%' ORDER BY id_klasifikasi DESC LIMIT 15");
                             if(mysqli_num_rows($query) > 0){
                                 while($row = mysqli_fetch_array($query)){
                                     echo '
@@ -183,49 +183,6 @@
                             </div>
                         </div>
                         <!-- Row form END -->';
-
-                        $query = mysqli_query($config, "SELECT * FROM tbl_klasifikasi");
-                        $cdata = mysqli_num_rows($query);
-                        $cpg = ceil($cdata/$limit);
-
-                        echo '<!-- Pagination START -->
-                              <ul class="pagination">';
-
-                        if($cdata > $limit ){
-
-                            //first and previous pagging
-                            if($pg > 1){
-                                $prev = $pg - 1;
-                                echo '<li><a href="?page=ref&pg=1"><i class="material-icons md-48">first_page</i></a></li>
-                                      <li><a href="?page=ref&pg='.$prev.'"><i class="material-icons md-48">chevron_left</i></a></li>';
-                            } else {
-                                echo '<li class="disabled"><a href=""><i class="material-icons md-48">first_page</i></a></li>
-                                      <li class="disabled"><a href=""><i class="material-icons md-48">chevron_left</i></a></li>';
-                            }
-
-                            //looping pagging
-                            for($i=1; $i <= $cpg; $i++)
-                            if($i != $pg){
-                                echo '<li class="waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
-                            } else {
-                                echo '<li class="active waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
-                            }
-
-                            //last and next pagging
-                            if($pg < $cpg){
-                                $next = $pg + 1;
-                                echo '<li><a href="?page=ref&pg='.$next.'"><i class="material-icons md-48">chevron_right</i></a></li>
-                                      <li><a href="?page=ref&pg='.$cpg.'"><i class="material-icons md-48">last_page</i></a></li>';
-                            } else {
-                                echo '<li class="disabled"><a href=""><i class="material-icons md-48">chevron_right</i></a></li>
-                                      <li class="disabled"><a href=""><i class="material-icons md-48">last_page</i></a></li>';
-                            }
-                                echo '
-                                </ul>
-                                <!-- Pagination END -->';
-                        } else {
-                            echo '';
-                        }
 
                     } else {
 
@@ -291,7 +248,8 @@
                                     $query = mysqli_query($config, "SELECT * FROM tbl_klasifikasi ORDER BY id_klasifikasi DESC LIMIT $curr, $limit");
                                     if(mysqli_num_rows($query) > 0){
                                         while($row = mysqli_fetch_array($query)){
-                                          echo '<td>'.$row['kode'].'</td>
+                                          echo '<td>'.$row['nama'].'</td>
+                                                <td>'.$row['kode'].'</td>
                                                 <td>'.$row['nama'].'</td>
                                                 <td>'.$row['uraian'].'</td>
                                                 <td>';
@@ -335,13 +293,12 @@
                                       <li class="disabled"><a href=""><i class="material-icons md-48">chevron_left</i></a></li>';
                             }
 
-                            //looping pagging
-                            for($i=1; $i <= $cpg; $i++)
-                                if($i != $pg){
-                                    echo '<li class="waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
-                                } else {
-                                    echo '<li class="active waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
+                            for ($i = 1; $i <= $cpg; $i++) {
+                                if ((($i >= $pg - 3) && ($i <= $pg + 3)) || ($i == 1) || ($i == $cpg)) {
+                                    if ($i == $pg) echo '<li class="active waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
+                                    else echo '<li class="waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
                                 }
+                            }
 
                             //last and next pagging
                             if($pg < $cpg){

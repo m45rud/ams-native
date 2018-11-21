@@ -77,8 +77,7 @@
 
 
                 //nama database hasil backup
-                $db = 'Backup';
-                $file = $db.'_'.date("Y-m-d_His").'.sql';
+                $file = date("Y-m-d_His").'.sql';
 
                 //backup database
                 if(isset($_REQUEST['backup'])){

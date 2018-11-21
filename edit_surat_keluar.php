@@ -212,7 +212,7 @@
 
                         <!-- Row in form START -->
                         <div class="row">
-                            <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Isi dengan angka">
+                            <div class="input-field col s6">
                                 <input type="hidden" name="id_surat" value="<?php echo $id_surat ;?>">
                                 <i class="material-icons prefix md-prefix">looks_one</i>
                                 <input id="no_agenda" type="number" class="validate" name="no_agenda" value="<?php echo $no_agenda ;?>" required>
@@ -225,7 +225,7 @@
                                     ?>
                                 <label for="no_agenda">Nomor Agenda</label>
                             </div>
-                            <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Diambil dari data referensi kode klasifikasi">
+                            <div class="input-field col s6">
                                 <i class="material-icons prefix md-prefix">bookmark</i>
                                 <input id="kode" type="text" class="validate" name="kode" value="<?php echo $kode ;?>" required>
                                     <?php
@@ -298,7 +298,7 @@
                                 <label for="isi">Isi Ringkas</label>
                             </div>
                             <div class="input-field col s6">
-                                <div class="file-field input-field tooltipped" data-position="top" data-tooltip="Jika tidak ada file/scan gambar surat, biarkan kosong">
+                                <div class="file-field input-field">
                                     <div class="btn light-green darken-1">
                                         <span>File</span>
                                         <input type="file" id="file" name="file">

@@ -59,7 +59,7 @@
                             die();
                         } else {
 
-                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE tgl_diterima BETWEEN '$dari_tanggal' AND '$sampai_tanggal' ORDER By id_surat DESC");
+                        $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE tgl_diterima BETWEEN '$dari_tanggal' AND '$sampai_tanggal' ORDER By id_surat DESC LIMIT 10");
 
                         echo '<!-- Row form Start -->
                             <div class="row jarak-form black-text">
@@ -84,69 +84,7 @@
                             <!-- Row form END -->
 
                             <div class="row agenda">
-                                <div class="col s12">';
-
-                                    $y = substr($dari_tanggal,0,4);
-                                    $m = substr($dari_tanggal,5,2);
-                                    $d = substr($dari_tanggal,8,2);
-                                    $y2 = substr($sampai_tanggal,0,4);
-                                    $m2 = substr($sampai_tanggal,5,2);
-                                    $d2 = substr($sampai_tanggal,8,2);
-
-                                    if($m == "01"){
-                                        $nm = "Januari";
-                                    } elseif($m == "02"){
-                                        $nm = "Februari";
-                                    } elseif($m == "03"){
-                                        $nm = "Maret";
-                                    } elseif($m == "04"){
-                                        $nm = "April";
-                                    } elseif($m == "05"){
-                                        $nm = "Mei";
-                                    } elseif($m == "06"){
-                                        $nm = "Juni";
-                                    } elseif($m == "07"){
-                                        $nm = "Juli";
-                                    } elseif($m == "08"){
-                                        $nm = "Agustus";
-                                    } elseif($m == "09"){
-                                        $nm = "September";
-                                    } elseif($m == "10"){
-                                        $nm = "Oktober";
-                                    } elseif($m == "11"){
-                                        $nm = "November";
-                                    } elseif($m == "12"){
-                                        $nm = "Desember";
-                                    }
-
-                                    if($m2 == "01"){
-                                        $nm2 = "Januari";
-                                    } elseif($m2 == "02"){
-                                        $nm2 = "Februari";
-                                    } elseif($m2 == "03"){
-                                        $nm2 = "Maret";
-                                    } elseif($m2 == "04"){
-                                        $nm2 = "April";
-                                    } elseif($m2 == "05"){
-                                        $nm2 = "Mei";
-                                    } elseif($m2 == "06"){
-                                        $nm2 = "Juni";
-                                    } elseif($m2 == "07"){
-                                        $nm2 = "Juli";
-                                    } elseif($m2 == "08"){
-                                        $nm2 = "Agustus";
-                                    } elseif($m2 == "09"){
-                                        $nm2 = "September";
-                                    } elseif($m2 == "10"){
-                                        $nm2 = "Oktober";
-                                    } elseif($m2 == "11"){
-                                        $nm2 = "November";
-                                    } elseif($m2 == "12"){
-                                        $nm2 = "Desember";
-                                    }
-                                    echo '
-
-                                <p class="warna agenda">Galeri file surat masuk antara tanggal <strong>'.$d." ".$nm." ".$y.'</strong> sampai dengan tanggal <strong>'.$d2." ".$nm2." ".$y2.'</strong></p>
+                                <div class="col s12"> <p class="warna agenda">Galeri file surat masuk antara tanggal <strong>'.indoDate($dari_tanggal).'</strong> sampai dengan tanggal <strong>'.indoDate($sampai_tanggal).'</strong></p>
                                 </div>
                             </div>';
 
@@ -165,7 +103,7 @@
                                     if(in_array($eks, $ekstensi) == true){
                                         echo '
                                             <div class="col m3">
-                                                <img class="galeri materialboxed" data-caption="'.date('d M Y', strtotime($row['tgl_diterima'])).'" src="./upload/surat_masuk/'.$row['file'].'"/>
+                                                <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./upload/surat_masuk/'.$row['file'].'"/>
                                                 <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
                                             </div>';
                                     } else {
@@ -173,13 +111,13 @@
                                         if(in_array($eks, $ekstensi2) == true){
                                             echo '
                                                 <div class="col m3">
-                                                    <img class="galeri materialboxed" data-caption="'.date('d M Y', strtotime($row['tgl_diterima'])).'" src="./asset/img/word.png"/>
+                                                    <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/word.png"/>
                                                     <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                                 </div>';
                                         } else {
                                             echo '
                                                 <div class="col m3">
-                                                    <img class="galeri materialboxed" data-caption="'.date('d M Y', strtotime($row['tgl_diterima'])).'" src="./asset/img/pdf.png"/>
+                                                    <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/pdf.png"/>
                                                     <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                                 </div>';
                                         }
@@ -239,7 +177,7 @@
                                     if(in_array($eks, $ekstensi) == true){
                                     echo '
                                         <div class="col m3">
-                                            <img class="galeri materialboxed" data-caption="'.date('d M Y', strtotime($row['tgl_diterima'])).'" src="./upload/surat_masuk/'.$row['file'].'"/>
+                                            <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./upload/surat_masuk/'.$row['file'].'"/>
                                             <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Tampilkan Ukuran Penuh</a>
                                         </div>';
                                     } else {
@@ -247,13 +185,13 @@
                                         if(in_array($eks, $ekstensi2) == true){
                                         echo '
                                             <div class="col m3">
-                                                <img class="galeri materialboxed" data-caption="'.date('d M Y', strtotime($row['tgl_diterima'])).'" src="./asset/img/word.png"/>
+                                                <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/word.png"/>
                                                 <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                             </div>';
                                         } else {
                                             echo '
                                                 <div class="col m3">
-                                                    <img class="galeri materialboxed" data-caption="'.date('d M Y', strtotime($row['tgl_diterima'])).'" src="./asset/img/pdf.png"/>
+                                                    <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/pdf.png"/>
                                                     <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
                                                 </div>';
                                         }
@@ -291,13 +229,13 @@
                                   <li class="disabled"><a href=""><i class="material-icons md-48">chevron_left</i></a></li>';
                         }
 
-                        //looping pagging
-                        for($i=1; $i <= $cpg; $i++)
-                            if($i != $pg){
-                                echo '<li class="waves-effect waves-dark"><a href="?page=gsm&pg='.$i.'"> '.$i.' </a></li>';
-                            } else {
-                                echo '<li class="active waves-effect waves-dark"><a href="?page=gsm&pg='.$i.'"> '.$i.' </a></li>';
+                        //perulangan pagging
+                        for ($i = 1; $i <= $cpg; $i++) {
+                            if ((($i >= $pg - 3) && ($i <= $pg + 3)) || ($i == 1) || ($i == $cpg)) {
+                                if ($i == $pg) echo '<li class="active waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
+                                else echo '<li class="waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
                             }
+                        }
 
                         //last and next pagging
                         if($pg < $cpg){

@@ -291,7 +291,7 @@
                                             ?>
                                         <label for="alamat">Alamat</label>
                                     </div>
-                                    <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Jika  belum memiliki NIP, isi dengan minus(-)">
+                                    <div class="input-field col s6">
                                         <i class="material-icons prefix md-prefix">looks_one</i>
                                         <input id="nip" type="text" class="validate" name="nip" value="<?php echo $row['nip']; ?>" required>
                                             <?php

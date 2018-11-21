@@ -119,7 +119,7 @@
 
                         <!-- Row in form START -->
                         <div class="row">
-                            <div class="input-field col s3 tooltipped" data-position="top" data-tooltip="Isi dengan huruf, angka, spasi dan titik(.)">
+                            <div class="input-field col s3">
                                 <i class="material-icons prefix md-prefix">font_download</i>
                                 <input id="kd" type="text" class="validate" maxlength="30" name="kode" required>
                                     <?php

@@ -138,7 +138,7 @@
 
                         <!-- Row in form START -->
                         <div class="row">
-                            <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Username minimal 5 karakter [ huruf, angka atau underscore(_) ]">
+                            <div class="input-field col s6">
                                 <i class="material-icons prefix md-prefix">account_circle</i>
                                 <input id="username" type="text" class="validate" name="username" value="<?php echo $_SESSION['username']; ?>" required>
                                     <?php
@@ -167,12 +167,12 @@
                                     ?>
                                 <label for="nama">Nama</label>
                             </div>
-                            <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Isikan password lama Anda">
+                            <div class="input-field col s6">
                                 <i class="material-icons prefix md-prefix">lock_outline</i>
                                 <input id="password_lama" type="password" class="validate" name="password_lama" required>
                                 <label for="password_lama">Password Lama</label>
                             </div>
-                            <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Jika belum memiliki NIP, isi dengan minus(-)">
+                            <div class="input-field col s6">
                                 <i class="material-icons prefix md-prefix">looks_one</i>
                                 <input id="nip" type="text" class="validate" name="nip" value="<?php echo $_SESSION['nip']; ?>" required autocomplete="off">
                                     <?php
@@ -184,7 +184,7 @@
                                     ?>
                                 <label for="nip">NIP</label>
                             </div>
-                            <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Password minimal 5 karakter">
+                            <div class="input-field col s6">
                                 <i class="material-icons prefix md-prefix">lock</i>
                                 <input id="password" type="password" class="validate" name="password" required>
                                     <?php
