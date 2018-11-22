@@ -224,8 +224,6 @@ Website     : https://masrud.com
                                 if(mysqli_num_rows($query) > 0){
                                     list($id_user, $username, $nama, $nip, $admin) = mysqli_fetch_array($query);
 
-                                    session_start();
-
                                     //buat session
                                     $_SESSION['id_user'] = $id_user;
                                     $_SESSION['username'] = $username;
