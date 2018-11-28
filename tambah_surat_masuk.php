@@ -82,6 +82,10 @@
                                                     $ukuran = $_FILES['file']['size'];
                                                     $target_dir = "upload/surat_masuk/";
 
+                                                    if (! is_dir($target_dir)) {
+                                                        mkdir($target_dir, 0755, true);
+                                                    }
+
                                                     //jika form file tidak kosong akan mengeksekusi script dibawah ini
                                                     if($file != ""){
 

@@ -101,6 +101,10 @@
                                                         $ukuran = $_FILES['logo']['size'];
                                                         $target_dir = "upload/";
 
+                                                        if (! is_dir($target_dir)) {
+                                                            mkdir($target_dir, 0755, true);
+                                                        }
+
                                                         //jika form logo tidak kosong akan mengeksekusi script dibawah ini
                                                         if(!empty($logo)){
 

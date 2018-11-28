@@ -141,9 +141,7 @@
                                         <th width="16%">Tindakan <span class="right"><i class="material-icons" style="color: #333;">settings</i></span></th>
                                     </tr>
                                 </thead>
-
-                                <tbody>
-                                    <tr>';
+                                <tbody>';
 
                                 //script untuk mencari data
                                 $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar WHERE isi LIKE '%$cari%' ORDER by id_surat DESC LIMIT $curr, 15");
@@ -151,6 +149,7 @@
                                     $no = 1;
                                     while($row = mysqli_fetch_array($query)){
                                       echo '
+                                      <tr>
                                         <td>'.$row['no_agenda'].'<br/><hr/>'.$row['kode'].'</td>
                                         <td>'.substr($row['isi'],0,200).'<br/><br/><strong>File :</strong>';
 
@@ -171,13 +170,12 @@
                                                     <i class="material-icons">delete</i> DEL</a>';
                                         } echo '
                                         </td>
-                                    </tr>
-                                </tbody>';
+                                    </tr>';
                                     }
                                 } else {
                                     echo '<tr><td colspan="5"><center><p class="add">Tidak ada data yang ditemukan</p></center></td></tr>';
                                 }
-                              echo '</table><br/><br/>
+                              echo '</tbody></table><br/><br/>
                             </div>
                         </div>
                         <!-- Row form END -->';
@@ -242,8 +240,7 @@
                                 </tr>
                             </thead>
 
-                            <tbody>
-                                <tr>';
+                            <tbody>';
 
                             //script untuk mencari data
                             $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar ORDER by id_surat DESC LIMIT $curr, $limit");
@@ -251,6 +248,7 @@
                                 $no = 1;
                                 while($row = mysqli_fetch_array($query)){
                                   echo '
+                                  <tr>
                                     <td>'.$row['no_agenda'].'<br/><hr/>'.$row['kode'].'</td>
                                     <td>'.substr($row['isi'],0,200).'<br/><br/><strong>File :</strong>';
 
@@ -271,13 +269,12 @@
                                                 <i class="material-icons">delete</i> DEL</a>';
                                     } echo '
                                     </td>
-                                </tr>
-                            </tbody>';
+                                </tr>';
                                 }
                             } else {
                                 echo '<tr><td colspan="5"><center><p class="add">Tidak ada data untuk ditampilkan. <u><a href="?page=tsk&act=add">Tambah data baru</a></u> </p></center></td></tr>';
                             }
-                            echo '</table>
+                            echo '</tbody></table>
                         </div>
                     </div>
                     <!-- Row form END -->';
@@ -297,15 +294,15 @@
                             echo '<li><a href="?page=tsk&pg=1"><i class="material-icons md-48">first_page</i></a></li>
                                   <li><a href="?page=tsk&pg='.$prev.'"><i class="material-icons md-48">chevron_left</i></a></li>';
                         } else {
-                            echo '<li class="disabled"><a href=""><i class="material-icons md-48">first_page</i></a></li>
-                                  <li class="disabled"><a href=""><i class="material-icons md-48">chevron_left</i></a></li>';
+                            echo '<li class="disabled"><a href="#"><i class="material-icons md-48">first_page</i></a></li>
+                                  <li class="disabled"><a href="#"><i class="material-icons md-48">chevron_left</i></a></li>';
                         }
 
                         //perulangan pagging
                         for ($i = 1; $i <= $cpg; $i++) {
                             if ((($i >= $pg - 3) && ($i <= $pg + 3)) || ($i == 1) || ($i == $cpg)) {
-                                if ($i == $pg) echo '<li class="active waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
-                                else echo '<li class="waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
+                                if ($i == $pg) echo '<li class="active waves-effect waves-dark"><a href="?page=tsk&pg='.$i.'"> '.$i.' </a></li>';
+                                else echo '<li class="waves-effect waves-dark"><a href="?page=tsk&pg='.$i.'"> '.$i.' </a></li>';
                             }
                         }
 
@@ -315,8 +312,8 @@
                             echo '<li><a href="?page=tsk&pg='.$next.'"><i class="material-icons md-48">chevron_right</i></a></li>
                                   <li><a href="?page=tsk&pg='.$cpg.'"><i class="material-icons md-48">last_page</i></a></li>';
                         } else {
-                            echo '<li class="disabled"><a href=""><i class="material-icons md-48">chevron_right</i></a></li>
-                                  <li class="disabled"><a href=""><i class="material-icons md-48">last_page</i></a></li>';
+                            echo '<li class="disabled"><a href="#"><i class="material-icons md-48">chevron_right</i></a></li>
+                                  <li class="disabled"><a href="#"><i class="material-icons md-48">last_page</i></a></li>';
                         }
                         echo '
                         </ul>

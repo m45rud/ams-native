@@ -135,9 +135,7 @@
                                                 <th width="16%">Tindakan</th>
                                             </tr>
                                         </thead>
-
-                                        <tbody>
-                                            <tr>';
+                                        <tbody>';
 
                                         $query2 = mysqli_query($config, "SELECT * FROM tbl_disposisi JOIN tbl_surat_masuk ON tbl_disposisi.id_surat = tbl_surat_masuk.id_surat WHERE tbl_disposisi.id_surat='$id_surat'");
 
@@ -145,53 +143,22 @@
                                             $no = 0;
                                             while($row = mysqli_fetch_array($query2)){
                                             $no++;
-                                             echo ' <td>'.$no.'</td>
+                                             echo '
+                                                <tr>
+                                                    <td>'.$no.'</td>
                                                     <td>'.$row['tujuan'].'</td>
-                                                    <td>'.$row['isi_disposisi'].'</td>';
-
-                                                    $y = substr($row['batas_waktu'],0,4);
-                                                    $m = substr($row['batas_waktu'],5,2);
-                                                    $d = substr($row['batas_waktu'],8,2);
-
-                                                    if($m == "01"){
-                                                        $nm = "Januari";
-                                                    } elseif($m == "02"){
-                                                        $nm = "Februari";
-                                                    } elseif($m == "03"){
-                                                        $nm = "Maret";
-                                                    } elseif($m == "04"){
-                                                        $nm = "April";
-                                                    } elseif($m == "05"){
-                                                        $nm = "Mei";
-                                                    } elseif($m == "06"){
-                                                        $nm = "Juni";
-                                                    } elseif($m == "07"){
-                                                        $nm = "Juli";
-                                                    } elseif($m == "08"){
-                                                        $nm = "Agustus";
-                                                    } elseif($m == "09"){
-                                                        $nm = "September";
-                                                    } elseif($m == "10"){
-                                                        $nm = "Oktober";
-                                                    } elseif($m == "11"){
-                                                        $nm = "November";
-                                                    } elseif($m == "12"){
-                                                        $nm = "Desember";
-                                                    }
-                                                    echo '
-
-                                                    <td>'.$row['sifat'].'<br/>'.$d." ".$nm." ".$y.'</td>
+                                                    <td>'.$row['isi_disposisi'].'</td>
+                                                    <td>'.$row['sifat'].'<br/>'.indoDate($row['batas_waktu']).'</td>
                                                     <td><a class="btn small blue waves-effect waves-light" href="?page=tsm&act=disp&id_surat='.$id_surat.'&sub=edit&id_disposisi='.$row['id_disposisi'].'">
                                                             <i class="material-icons">edit</i> EDIT</a>
                                                         <a class="btn small deep-orange waves-effect waves-light" href="?page=tsm&act=disp&id_surat='.$id_surat.'&sub=del&id_disposisi='.$row['id_disposisi'].'"><i class="material-icons">delete</i> DEL</a>
                                                     </td>
-                                            </tr>
-                                        </tbody>';
+                                            </tr>';
                                             }
                                         } else {
                                             echo '<tr><td colspan="5"><center><p class="add">Tidak ada data untuk ditampilkan. <u><a href="?page=tsm&act=disp&id_surat='.$row['id_surat'].'&sub=add">Tambah data baru</a></u></p></center></td></tr>';
                                         }
-                                echo '</table>
+                                echo '</tbody></table>
                                 </div>
                             </div>
                             <!-- Row form END -->';

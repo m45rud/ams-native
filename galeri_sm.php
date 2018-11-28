@@ -232,8 +232,8 @@
                         //perulangan pagging
                         for ($i = 1; $i <= $cpg; $i++) {
                             if ((($i >= $pg - 3) && ($i <= $pg + 3)) || ($i == 1) || ($i == $cpg)) {
-                                if ($i == $pg) echo '<li class="active waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
-                                else echo '<li class="waves-effect waves-dark"><a href="?page=ref&pg='.$i.'"> '.$i.' </a></li>';
+                                if ($i == $pg) echo '<li class="active waves-effect waves-dark"><a href="?page=gsm&pg='.$i.'"> '.$i.' </a></li>';
+                                else echo '<li class="waves-effect waves-dark"><a href="?page=gsm&pg='.$i.'"> '.$i.' </a></li>';
                             }
                         }
 

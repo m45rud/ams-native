@@ -111,13 +111,14 @@
                                         <th width="16%">Tindakan</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>';
+                                <tbody>';
 
                                 if(mysqli_num_rows($query) > 0){
                                     $no = 1;
                                     while($row = mysqli_fetch_array($query)){
-                                    echo '<td>'.$no++.'</td>';
+                                    echo '
+                                    <tr>
+                                    <td>'.$no++.'</td>';
 
                                     if($row['admin'] == 1){
                                         $row['admin'] = 'Super Admin';
@@ -142,13 +143,12 @@
                                                  <a class="btn small deep-orange waves-effect waves-light" href="?page=sett&sub=usr&act=del&id_user='.$row['id_user'].'"><i class="material-icons">delete</i> DEL</a>';
                                         }
                                     } echo '</td>
-                                    </tr>
-                                </tbody>';
+                                    </tr>';
                                     }
                                 } else {
                         echo '<tr><td colspan="5"><center><p class="add">Tidak ada data untuk ditampilkan</p></center></td></tr>';
                                 }
-                      echo '</table>
+                      echo '</tbody></table>
                             <!-- Table END -->
                         </div>
 
@@ -169,8 +169,8 @@
                             echo '<li><a href="?page=sett&sub=usr&pg=1"><i class="material-icons md-48">first_page</i></a></li>
                                   <li><a href="?page=sett&sub=usr&pg='.$prev.'"><i class="material-icons md-48">chevron_left</i></a></li>';
                         } else {
-                            echo '<li class="disabled"><a href=""><i class="material-icons md-48">first_page</i></a></li>
-                                  <li class="disabled"><a href=""><i class="material-icons md-48">chevron_left</i></a></li>';
+                            echo '<li class="disabled"><a href="#"><i class="material-icons md-48">first_page</i></a></li>
+                                  <li class="disabled"><a href="#"><i class="material-icons md-48">chevron_left</i></a></li>';
                         }
 
                         //perulangan pagging
@@ -187,8 +187,8 @@
                             echo '<li><a href="?page=sett&sub=usr&pg='.$next.'"><i class="material-icons md-48">chevron_right</i></a></li>
                                   <li><a href="?page=sett&sub=usr&pg='.$cpg.'"><i class="material-icons md-48">last_page</i></a></li>';
                         } else {
-                            echo '<li class="disabled"><a href=""><i class="material-icons md-48">chevron_right</i></a></li>
-                                  <li class="disabled"><a href=""><i class="material-icons md-48">last_page</i></a></li>';
+                            echo '<li class="disabled"><a href="#"><i class="material-icons md-48">chevron_right</i></a></li>
+                                  <li class="disabled"><a href="#"><i class="material-icons md-48">last_page</i></a></li>';
                         }
                             echo ' </ul>
                                    <!-- Pagination END -->';

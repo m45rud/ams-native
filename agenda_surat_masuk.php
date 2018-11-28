@@ -160,13 +160,13 @@
                                 </tr>
                             </thead>
 
-                            <tbody>
-                                <tr>';
+                            <tbody>';
 
                             if(mysqli_num_rows($query) > 0){
                                 $no = 0;
                                 while($row = mysqli_fetch_array($query)){
                                  echo '
+                                 <tr>
                                         <td>'.$row['no_agenda'].'</td>
                                         <td>'.$row['kode'].'</td>
                                         <td>'.$row['isi'].'</td>
@@ -186,13 +186,12 @@
                                         <td></td>
                                         <td>'.$row['keterangan'].'';
                                   echo '</td>
-                                </tr>
-                            </tbody>';
+                                </tr>';
                                 }
                             } else {
                                 echo '<tr><td colspan="9"><center><p class="add">Tidak ada agenda surat</p></center></td></tr>';
                             } echo '
-                        </table>
+                        </tbody></table>
                     </div>';
             }
         } else {

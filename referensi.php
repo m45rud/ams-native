@@ -150,15 +150,14 @@
                                     <th width="18%">Tindakan <span class="right"><i class="material-icons" style="color: #333;">settings</i></span></th>
                                 </tr>
                             </thead>
-
-                            <tbody>
-                                <tr>';
+                            <tbody>';
 
                             //script untuk menampilkan data
                             $query = mysqli_query($config, "SELECT * FROM tbl_klasifikasi WHERE uraian LIKE '%$cari%' ORDER BY id_klasifikasi DESC LIMIT 15");
                             if(mysqli_num_rows($query) > 0){
                                 while($row = mysqli_fetch_array($query)){
-                                    echo '
+                                echo '
+                                    <tr>
                                         <td>'.$row['kode'].'</td>
                                         <td>'.$row['nama'].'</td>
                                         <td>'.$row['uraian'].'</td>
@@ -173,13 +172,12 @@
                                                     <i class="material-icons">delete</i> DEL</a>';
                                         } echo '
                                         </td>
-                                    </tr>
-                                </tbody>';
+                                    </tr>';
                                 }
                             } else {
                                 echo '<tr><td colspan="5"><center><p class="add">Tidak ada data yang ditemukan</p></center></td></tr>';
                             }
-                          echo '</table><br/><br/>
+                          echo '</tbody></table><br/><br/>
                             </div>
                         </div>
                         <!-- Row form END -->';
@@ -240,16 +238,14 @@
 
                                         </tr>
                                     </thead>
-
-                                    <tbody>
-                                        <tr>';
+                                    <tbody>';
 
                                     //script untuk menampilkan data
                                     $query = mysqli_query($config, "SELECT * FROM tbl_klasifikasi ORDER BY id_klasifikasi DESC LIMIT $curr, $limit");
                                     if(mysqli_num_rows($query) > 0){
                                         while($row = mysqli_fetch_array($query)){
-                                          echo '<td>'.$row['nama'].'</td>
-                                                <td>'.$row['kode'].'</td>
+                                          echo '
+                                          <tr><td>'.$row['kode'].'</td>
                                                 <td>'.$row['nama'].'</td>
                                                 <td>'.$row['uraian'].'</td>
                                                 <td>';
@@ -263,13 +259,12 @@
                                                             <i class="material-icons">delete</i> DEL</a>';
                                                 } echo '
                                                 </td>
-                                            </tr>
-                                        </tbody>';
+                                            </tr>';
                                         }
                                     } else {
                                         echo '<tr><td colspan="5"><center><p class="add">Tidak ada data yang ditemukan. <u><a href="?page=ref&act=add">Tambah data baru</a></u></p></center></td></tr>';
                                     }
-                                  echo '</table><br/><br/>
+                                  echo '</tbody></table><br/><br/>
                             </div>
                         </div>
                         <!-- Row form END -->';
@@ -289,8 +284,8 @@
                                 echo '<li><a href="?page=ref&pg=1"><i class="material-icons md-48">first_page</i></a></li>
                                       <li><a href="?page=ref&pg='.$prev.'"><i class="material-icons md-48">chevron_left</i></a></li>';
                             } else {
-                                echo '<li class="disabled"><a href=""><i class="material-icons md-48">first_page</i></a></li>
-                                      <li class="disabled"><a href=""><i class="material-icons md-48">chevron_left</i></a></li>';
+                                echo '<li class="disabled"><a href="#"><i class="material-icons md-48">first_page</i></a></li>
+                                      <li class="disabled"><a href="#"><i class="material-icons md-48">chevron_left</i></a></li>';
                             }
 
                             for ($i = 1; $i <= $cpg; $i++) {
@@ -306,12 +301,11 @@
                                 echo '<li><a href="?page=ref&pg='.$next.'"><i class="material-icons md-48">chevron_right</i></a></li>
                                       <li><a href="?page=ref&pg='.$cpg.'"><i class="material-icons md-48">last_page</i></a></li>';
                             } else {
-                                echo '<li class="disabled"><a href=""><i class="material-icons md-48">chevron_right</i></a></li>
-                                      <li class="disabled"><a href=""><i class="material-icons md-48">last_page</i></a></li>';
+                                echo '<li class="disabled"><a href="#"><i class="material-icons md-48">chevron_right</i></a></li>
+                                      <li class="disabled"><a href="#"><i class="material-icons md-48">last_page</i></a></li>';
                             }
                             echo '
-                            </ul>
-                            <!-- Pagination END -->';
+                            </ul>';
                     } else {
                         echo '';
                     }
