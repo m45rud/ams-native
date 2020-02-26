@@ -173,6 +173,7 @@
                                         <td>'.$row['asal_surat'].'</td>
                                         <td>'.$row['no_surat'].'</td>
                                         <td>'.indoDate($row['tgl_surat']).'</td>
+                                        <td>'.indoDate($row['tgl_diterima']).'</td>
                                         <td>';
 
                                         $id_user = $row['id_user'];
@@ -182,7 +183,6 @@
                                         }
 
                                         echo ''.$row['id_user'].'</td>
-                                        <td>'.indoDate($row['tgl_diterima']).'</td>
                                         <td></td>
                                         <td>'.$row['keterangan'].'';
                                   echo '</td>
