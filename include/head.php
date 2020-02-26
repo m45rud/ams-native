@@ -28,7 +28,6 @@
 
     <!-- Global style START -->
     <link type="text/css" rel="stylesheet" href="asset/css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="asset/css/jquery-ui.css">
     <style type="text/css">
         body {
             background: #fff;
