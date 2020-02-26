@@ -173,7 +173,7 @@
                         echo '<h6 class="up">'.$institusi.'</h6>';
                         echo '<h5 class="up" id="nama">'.$nama.'</h5><br/>';
                         echo '<h6 class="status">'.$status.'</h6>';
-                        echo '<span id="alamat">Jalan Raya Kediri Gg. Kwagean No. 04 Loceret Telp/Fax. (0358) 329806 Nganjuk 64471</span>';
+                        echo '<span id="alamat">'.$alamat.'</span>';
 
                     echo '
                 </div>
