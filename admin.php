@@ -128,23 +128,27 @@ Website     : https://masrud.com
             ?>
 
             <!-- Info Statistic START -->
-            <div class="col s12 m4">
-                <div class="card cyan">
-                    <div class="card-content">
-                        <span class="card-title white-text"><i class="material-icons md-36">mail</i> Jumlah Surat Masuk</span>
-                        <?php echo '<h5 class="white-text link">'.$count1.' Surat Masuk</h5>'; ?>
+            <a href="?page=tsm">
+                <div class="col s12 m4">
+                    <div class="card cyan">
+                        <div class="card-content">
+                            <span class="card-title white-text"><i class="material-icons md-36">mail</i> Jumlah Surat Masuk</span>
+                            <?php echo '<h5 class="white-text link">'.$count1.' Surat Masuk</h5>'; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="col s12 m4">
-                <div class="card lime darken-1">
-                    <div class="card-content">
-                        <span class="card-title white-text"><i class="material-icons md-36">drafts</i> Jumlah Surat Keluar</span>
-                        <?php echo '<h5 class="white-text link">'.$count2.' Surat Keluar</h5>'; ?>
+            <a href="?page=tsk">
+                <div class="col s12 m4">
+                    <div class="card lime darken-1">
+                        <div class="card-content">
+                            <span class="card-title white-text"><i class="material-icons md-36">drafts</i> Jumlah Surat Keluar</span>
+                            <?php echo '<h5 class="white-text link">'.$count2.' Surat Keluar</h5>'; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
             <div class="col s12 m4">
                 <div class="card yellow darken-3">
@@ -155,25 +159,29 @@ Website     : https://masrud.com
                 </div>
             </div>
 
-            <div class="col s12 m4">
-                <div class="card deep-orange">
-                    <div class="card-content">
-                        <span class="card-title white-text"><i class="material-icons md-36">class</i> Jumlah Klasifikasi Surat</span>
-                        <?php echo '<h5 class="white-text link">'.$count4.' Klasifikasi Surat</h5>'; ?>
+            <a href="?page=ref">
+                <div class="col s12 m4">
+                    <div class="card deep-orange">
+                        <div class="card-content">
+                            <span class="card-title white-text"><i class="material-icons md-36">class</i> Jumlah Klasifikasi Surat</span>
+                            <?php echo '<h5 class="white-text link">'.$count4.' Klasifikasi Surat</h5>'; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
         <?php
             if($_SESSION['id_user'] == 1 || $_SESSION['admin'] == 2){?>
-            <div class="col s12 m4">
-                <div class="card blue accent-2">
-                    <div class="card-content">
-                        <span class="card-title white-text"><i class="material-icons md-36">people</i> Jumlah Pengguna</span>
-                        <?php echo '<h5 class="white-text link">'.$count5.' Pengguna</h5>'; ?>
+                <a href="?page=sett&sub=usr">
+                    <div class="col s12 m4">
+                        <div class="card blue accent-2">
+                            <div class="card-content">
+                                <span class="card-title white-text"><i class="material-icons md-36">people</i> Jumlah Pengguna</span>
+                                <?php echo '<h5 class="white-text link">'.$count5.' Pengguna</h5>'; ?>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </a>
             <!-- Info Statistic START -->
         <?php
             }
