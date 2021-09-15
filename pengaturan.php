@@ -94,7 +94,7 @@
                                                         die();
                                                     } else {
 
-                                                        $ekstensi = array('png','jpg');
+                                                        $ekstensi = array('png','jpg', 'jpeg');
                                                         $logo = $_FILES['logo']['name'];
                                                         $x = explode('.', $logo);
                                                         $eks = strtolower(end($x));
@@ -102,7 +102,7 @@
                                                         $target_dir = "upload/";
 
                                                         if (! is_dir($target_dir)) {
-                                                            mkdir($target_dir, 0755, true);
+                                                            mkdir($target_dir, 0777, true);
                                                         }
 
                                                         //jika form logo tidak kosong akan mengeksekusi script dibawah ini
@@ -235,7 +235,6 @@
                                 <!-- Row in form START -->
                                 <div class="row">
                                     <div class="input-field col s6">
-                                        <input type="hidden" value="<?php echo $id_instansi; ?>" name="id_instansi">
                                         <i class="material-icons prefix md-prefix">school</i>
                                         <input id="nama" type="text" class="validate" name="nama" value="<?php echo $row['nama']; ?>" required>
                                             <?php

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 21, 2018 at 08:59 AM
--- Server version: 10.3.11-MariaDB-1:10.3.11+maria~xenial-log
--- PHP Version: 7.2.12-1+ubuntu16.04.1+deb.sury.org+1
+-- Host: localhost:3306
+-- Generation Time: Sep 15, 2021 at 09:46 AM
+-- Server version: 10.1.48-MariaDB-0ubuntu0.18.04.1
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -64,7 +63,7 @@ CREATE TABLE `tbl_instansi` (
 --
 
 INSERT INTO `tbl_instansi` (`id_instansi`, `institusi`, `nama`, `status`, `alamat`, `kepsek`, `nip`, `website`, `email`, `logo`, `id_user`) VALUES
-(1, 'Dinas Pendidikan Pemuda Dan Olahraga', 'SMK MasRud.com', 'Terakreditasi A', 'Sawahan, Nganjuk, Jawa Timur', 'M. Rudianto', '-', 'https://masrud.com', 'rudi@masrud.com', 'logo.png', 1);
+(1, 'Dinas Pendidikan Pemuda Dan Olahraga', 'SMK MasRud.com', 'Terakreditasi A', 'Sawahan, Nganjuk, Jawa Timur', 'Rudi', '-', 'https://masrud.com', 'email@masrud.com', 'logo.png', 1);
 
 -- --------------------------------------------------------
 
@@ -162,7 +161,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id_user`, `username`, `password`, `nama`, `nip`, `admin`) VALUES
-(1, 'masrud', '7d05dc02abe9cda729d0c798c886db47', 'M. Rudianto', '-', 1);
+(1, 'masrud', '7d05dc02abe9cda729d0c798c886db47', 'Rudi', '-', 1);
 
 --
 -- Indexes for dumped tables
@@ -224,19 +223,19 @@ ALTER TABLE `tbl_disposisi`
 -- AUTO_INCREMENT for table `tbl_klasifikasi`
 --
 ALTER TABLE `tbl_klasifikasi`
-  MODIFY `id_klasifikasi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_klasifikasi` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_surat_keluar`
 --
 ALTER TABLE `tbl_surat_keluar`
-  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_surat_masuk`
 --
 ALTER TABLE `tbl_surat_masuk`
-  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
