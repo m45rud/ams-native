@@ -20,4 +20,4 @@ Inspired by Nur Akhwam.
 
 ---
 
-Ini adalah source code dari postingan https://masrud.com/aplikasi-manajemen-surat/
+Informasi lengkap seputar `username` dan `password` bisa dilihat di https://masrud.com/aplikasi-manajemen-surat/
