@@ -20,4 +20,4 @@ Inspired by Nur Akhwam.
 
 ---
 
-Informasi lengkap seputar `username` dan `password` untuk login bisa dilihat di https://masrud.com/aplikasi-manajemen-surat/
+Informasi lengkap seputar `username` dan `password` untuk login bisa dilihat di https://masrud.com/aplikasi-manajemen-surat/?utm_source=github.com&utm_medium=readme.md&utm_campaign=ams-native
